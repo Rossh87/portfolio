@@ -1,0 +1,27 @@
+@import 'commonStyles/colors.scss';
+
+.nav {
+	height: 100vh;
+	width: 40%;
+	background-color: $dark;
+	position: absolute;
+
+
+	&.nav_menu {
+		height: 100%;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	&.nav_item {
+		color: $accent;
+		background-color: $silver;
+	}
+
+	&.nav_item::hover {
+		background-color: gray;
+		border: 2px solid $silver;
+	}
+}

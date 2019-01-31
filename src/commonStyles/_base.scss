@@ -1,0 +1,42 @@
+// Credit for this simple reset goes to Seb & Co.
+// over at alligator.io.  Find it @
+// https://alligator.io/css/minimal-css-reset/;
+
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+  margin: 0;
+  padding: 0;
+  // This clears default bolding on <h*> tags.  
+  // Adjust to taste.
+  font-weight: normal;
+}
+
+body {
+  background-color:blue;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+// Sets <img> to be responsive to container by default.
+// Necessary to avoid confusing behaviors with
+// object-fit property.
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+#root {
+  position: relative;
+  min-height: 100vh;
+  min-width: 100vh;
+}
