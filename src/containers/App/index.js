@@ -3,15 +3,15 @@ import {BrowserRouter as Router} from 'react-router-dom';
 
 // Local components
 import Routes from '../Routes';
-import Main from '../Main';
+import Wrapper from '../Wrapper';
 
 class App extends Component {
   render() {
   	return(
   		<Router>
-  			<Main>
-  				<Routes />
-  			</Main>
+	  			<Wrapper>
+	  				<Routes />
+	  			</Wrapper>
   		</Router>
   	)
   }

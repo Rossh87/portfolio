@@ -1,13 +1,21 @@
 import React from 'react';
-import {Route} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 
 // local components
-import Navbar from './Navbar';
+import Main from 'containers/Main';
+import About from 'components/About';
+import ReactProjects from 'containers/ReactProjects';
 
 class Routes extends React.Component {
 	render() {
 		return(
-			<div>'Here's Routes!'</div>
+				<Switch>
+
+					<Route exact path='/' component={Main} />
+
+					<Route path='/projects/react' component={ReactProjects} />
+
+				</Switch>
 		)
 	}
 }

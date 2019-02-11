@@ -1,27 +1,39 @@
-@import 'commonStyles/colors.scss';
+@import 'commonStyles/_colors.scss';
 
-.nav {
-	height: 100vh;
-	width: 40%;
-	background-color: $dark;
+
+.c-nav {
 	position: absolute;
+	z-index: 10;
+	background-color: $silver;
+	top: 0;
+	right: 100%;
+	bottom: 0;
+	left: 0;
+	transition: .1s right ease-in;
+	font-size: 2rem;
+	font-family: 'Oswald', sans-serif;
 
+	&.s-is-open {
+		right: 0;
 
-	&.nav_menu {
-		height: 100%;
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-	}
-
-	&.nav_item {
-		color: $accent;
-		background-color: $silver;
-	}
-
-	&.nav_item::hover {
-		background-color: gray;
-		border: 2px solid $silver;
+		.c-nav_menu {
+			display:flex;
+		}
 	}
 }
+
+.c-nav_menu {
+	display: none;
+	width: 100%;
+	height: 100%;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.c-nav_item {
+	text-align: center;
+	&:hover {
+		background-color: lighten($silver, 10%);
+	}
+}
+

@@ -1,0 +1,30 @@
+@import 'commonStyles/_colors.scss';
+
+.c-about {
+	display: grid;
+	grid-template-areas: 
+	"head"
+	"text"
+	"img"
+	 "graphic";
+}
+
+.c-about_header {
+	grid-area: "head";
+	font-size: 2.5rem;
+}
+
+.c-about_img {
+	grid-area: "img";
+	border-radius: 10px;
+
+}
+
+.c-about_graphic {
+	grid-area: "graphic";
+}
+
+.c-about_text {
+	grid-area: "text";
+}
+

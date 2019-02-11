@@ -1,0 +1,48 @@
+@import 'commonStyles/_colors.scss';
+
+.toggle {
+	position: absolute;
+	top: 5%;
+	left: 5%;
+	z-index: 20;
+}
+
+%hamburger-shared {
+	display: block;
+	content: '';
+	width: 2em;
+	height: 3px;
+	background-color: $dark;
+	transition: all 250ms linear;
+}
+
+.hamburger {
+	margin: 1em;
+
+	@extend %hamburger-shared;
+
+	&.hamburger--open {
+		transform: rotate(45deg);
+
+		&::before {
+			opacity: 0;
+		}
+
+		&::after {
+			transform: rotate(-90deg) translateX(3px);
+		}
+	}
+
+	&::before {
+		@extend %hamburger-shared;
+
+		transform: translateY(-6px);
+	}
+
+	&::after {
+		@extend %hamburger-shared;
+
+		transform: translateY(3px); 
+	}
+}
+

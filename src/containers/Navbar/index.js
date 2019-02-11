@@ -1,25 +1,61 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+
+// Local components
+import LinkItem from 'legos/LinkItem';
 
 import './styles.scss';
 
-class Navbar extends React.Component {
-	state = {
-		focusLink: null,
-		isOpen: false
+const Navbar = ({navIsOpen, handleClick}) => {
+
+	const getNavClasses = () => {	
+		return navIsOpen ?
+			"c-nav s-is-open"
+			: "c-nav"
 	}
 
-	render() {
-		return(
-			<nav className="nav">
-				<ul className="nav nav_menu">
-					<li>About<Link className="nav nav_item"  to={'/'}/></li>
-					<li>Projects<Link className="nav nav_item"  to={'/'}/></li>
-					<li>Contact<Link className="nav nav_item"  to={'/'}/></li>
+	return(
+			<nav className={getNavClasses()}>
+				<ul className="c-nav_menu">
+
+					<LinkItem
+							styleClass="c-nav_item"
+							isLinkComponent={true}
+							clickHandler={handleClick}
+							path={'/'}
+						>
+						Home
+					</LinkItem>
+
+					<LinkItem
+						styleClass="c-nav_item"
+						isLinkComponent={true}
+						clickHandler={handleClick}
+						path={'/about'}
+					>
+						About
+					</LinkItem>
+
+					<LinkItem
+						styleClass="c-nav_item"
+						isLinkComponent={true}
+						clickHandler={handleClick}
+						path={'/projects'}
+					>
+						Projects
+					</LinkItem>
+
+					<LinkItem
+						styleClass="c-nav_item"
+						isLinkComponent={true}
+						clickHandler={handleClick}
+						path={'/contact'}
+					>
+						Contact
+					</LinkItem>
+					
 				</ul>
 			</nav>
 		)
-	}
 }
 
 export default Navbar;

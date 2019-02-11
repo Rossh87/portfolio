@@ -1,0 +1,14 @@
+@import 'commonStyles/_colors.scss';
+
+.c-reactGraphic {
+	width: 100%;
+	height: 100%;
+	transition: .2s all;
+	stroke: $white;
+	fill: $silver;
+
+	&.s-is-hovered {
+		fill: $react-blue;
+		stroke: $silver;
+	}
+}

@@ -1,0 +1,43 @@
+@import 'commonStyles/_colors.scss';
+
+.hero {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 30;
+	display: flex;
+	border: 3rem solid $white;
+	flex-wrap: nowrap;
+
+	font-size: 5rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	transition: .5s all;
+
+	display: none;
+
+	&.hero--open {
+		display: flex;
+	}
+
+	.hero_half {
+		display: flex;
+		align-items: center;
+		height: 100%;
+		flex: 50%;
+	}
+
+	.hero_half--left {
+		justify-content: flex-end;
+		background-color: $dark;
+		color: $silver;
+	}
+
+	.hero_half--right {
+		background-color: $silver;
+		color: $dark;
+	}
+
+}

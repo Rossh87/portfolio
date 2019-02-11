@@ -1,0 +1,147 @@
+@import 'commonStyles/_colors.scss';
+
+.c-skillCard {
+	min-width: 220px;
+	max-width: 300px;
+	border: 2px solid $silver;
+	flex: 1 1 0;
+	padding: 1rem;
+	margin: .5rem .5rem;
+	color: $dark;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	&:hover {
+		transform: scale(1.0075) translate(2px, 2px);
+	}
+
+	&.s-has-react-theme:hover {
+		animation: reactBorder .25s linear forwards;
+	}
+
+	&.s-has-html-theme:hover {
+		animation: htmlBorder .2s ease-in-out forwards;
+	}
+
+	&.s-has-js-theme:hover {
+		animation: jsBorder .25s linear forwards;
+	}
+}
+
+.c-skillCard_link {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.c-skillCard_text {
+	background-color: $white;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	height: 10rem;
+	width: 90%;
+	display: flex;
+	flex-direction: column;
+}
+
+.c-skillCard_title {
+	border-bottom: 1px solid $dark;
+}
+
+.c-skillCard_content {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+// Animation definitions below
+
+@keyframes htmlBorder {
+
+	from {
+		border: 2px solid $silver;
+	}
+
+	25% {
+		border: 2px solid $silver;
+		border-top: 2px solid $accent;
+	}
+
+	50% {
+		border: 2px solid $silver;
+		border-right: 2px solid $accent;
+	}
+
+	75% {
+		border: 2px solid $silver;
+		border-bottom: 2px solid $accent;
+	}
+
+	to {
+		border: 2px solid $silver;
+		border-left: 2px solid $accent;
+	}
+}
+
+@keyframes reactBorder {
+	from {
+		border: 2px solid transparent;
+	}
+
+	25% {
+		border: 2px solid transparent;
+		border-top: 2px solid #61dafb;
+	}
+
+	50% {
+		border: 2px solid transparent;
+		border-top: 2px solid $silver;
+		border-right: 2px solid #61dafb;
+	}
+
+	75% {
+		border: 2px solid transparent;
+		border-top: 2px solid $silver;
+		border-right: 2px solid $silver;
+		border-bottom: 2px solid #61dafb;
+	}
+
+	to {
+		border: 2px solid $silver;
+		border-left: 2px solid #61dafb;
+	}
+}
+
+@keyframes jsBorder {
+	from {
+		border: 2px solid transparent;
+	}
+
+	25% {
+		border: 2px solid transparent;
+		border-top: 2px solid #b00000;
+	}
+
+	50% {
+		border: 2px solid transparent;
+		border-top: 2px solid $silver;
+		border-right: 2px solid #b00000;
+	}
+
+	75% {
+		border: 2px solid transparent;
+		border-top: 2px solid $silver;
+		border-right: 2px solid $silver;
+		border-bottom: 2px solid #b00000;
+	}
+
+	to {
+		border: 2px solid $silver;
+		border-left: 2px solid #b00000;
+	}
+}
+

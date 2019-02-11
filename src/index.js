@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 //.scss are resolved using the 
 // SASS_PATH environment variable.
 import 'commonStyles/_base.scss';
+import 'commonStyles/_colors.scss';
 
 // Get local components
 import App from './containers/App';
