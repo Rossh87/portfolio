@@ -1,7 +1,5 @@
 import React from 'react';
 
-import ProgressMeter from 'legos/ProgressMeter';
-
 import './styles.scss';
 
 const About = (props) => {

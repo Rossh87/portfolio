@@ -3,8 +3,7 @@ import {Route, Switch} from 'react-router-dom';
 
 // local components
 import Main from 'containers/Main';
-import About from 'components/About';
-import ReactProjects from 'containers/ReactProjects';
+import ProjectPage from 'containers/ProjectPage';
 
 class Routes extends React.Component {
 	render() {
@@ -13,7 +12,7 @@ class Routes extends React.Component {
 
 					<Route exact path='/' component={Main} />
 
-					<Route path='/projects/react' component={ReactProjects} />
+					<Route path='/projects/:projectType' component={ProjectPage} />
 
 				</Switch>
 		)

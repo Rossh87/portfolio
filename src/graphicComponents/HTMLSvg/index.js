@@ -12,12 +12,6 @@ const HTMLSvg = ({graphicTheme, isHovered}) => {
 			: 'c-htmlGraphic'
 	}
 
-	const slashPath = () => {
-		return isHovered ?
-			"M 220, 10 L 160, 110"
-			: null
-	}
-
 	return (
 		<svg 
 			className={buildSvgClassName()} 

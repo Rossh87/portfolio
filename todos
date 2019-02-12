@@ -8,5 +8,6 @@ Implement a back end to add projects(?)
 
 Rethink Form component 'division of labor' to enhance reusability
 
-Get real projects added to list...
+Update AjaxHandler to use live API endpoint
+
 

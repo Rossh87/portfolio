@@ -1,7 +1,6 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import axios from 'axios';
 
+// Get local components
 import ProjectCard from 'components/ProjectCard';
 
 import './styles.scss';
@@ -21,7 +20,7 @@ class ProjectGrid extends React.Component {
 					Object-oriented and functional patterns.  The foundation of it all...
 				</ProjectCard>
 				
-				<ProjectCard title="HTML/CSS" theme="html">
+				<ProjectCard title="HTML/CSS" theme="css">
 					Clean, Modular, Responsive.
 				</ProjectCard>
 			</div>

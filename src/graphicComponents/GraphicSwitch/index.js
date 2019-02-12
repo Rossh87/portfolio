@@ -19,7 +19,7 @@ class GraphicSwitch extends React.Component {
 				case('react'):
 					return <ReactSvg graphicTheme={graphicTheme} isHovered={isHovered}/>;
 
-				case('html'):
+				case('css'):
 					return <HTMLSvg graphicTheme={graphicTheme} isHovered={isHovered}/>;
 
 				case('js'):

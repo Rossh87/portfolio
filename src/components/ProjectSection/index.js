@@ -6,10 +6,10 @@ import './styles.scss';
 const ProjectSection = (props) => {
 	const {
 		imageAlt,
-		imageSrc,
+		logoImg,
 		text,
 		isInverted,
-		repo,
+		repoAddress,
 		demoURL
 	} = props;
 
@@ -26,14 +26,14 @@ const ProjectSection = (props) => {
 					<span>Go to live demo</span>
 					<i className="far fa-arrow-alt-circle-right"></i>
 				</a>
-				<a href={repo} className="c-project_links--github">
+				<a href={repoAddress} className="c-project_links--github">
 					<span>View source code</span>
 					<i className="fab fa-github"></i>
 				</a>
 			</div>
 			:
 			<div className="c-project_links">
-				<a href={repo} className="c-project_links--github">
+				<a href={repoAddress} className="c-project_links--github">
 					<span>View source code</span>
 					<i className="fab fa-github"></i>
 				</a>
@@ -48,10 +48,12 @@ const ProjectSection = (props) => {
 				</article>
 				{buildLinks()}
 			</div>
-
-			<a href={repo}>
-				<img className='c-project_img' src={imageSrc} alt={imageAlt}/>
-			</a>
+			{
+				logoImg &&
+				<a href={repoAddress}>
+					<img className='c-project_img' src={logoImg[0].thumbnails.large.url} alt={imageAlt}/>
+				</a>
+			}
 		</section>
 	)
 }
@@ -59,8 +61,10 @@ const ProjectSection = (props) => {
 export default ProjectSection;
 
 ProjectSection.propTypes = {
-	imageSrc: PropTypes.string.isRequired,
 	imageAlt: PropTypes.string.isRequired,
 	text: PropTypes.string.isRequired,
-	isInverted: PropTypes.bool.isRequired
+	isInverted: PropTypes.bool.isRequired,
+	repoAddress: PropTypes.string.isRequired,
+	demoURL: PropTypes.string,
+	logoImg: PropTypes.array
 }

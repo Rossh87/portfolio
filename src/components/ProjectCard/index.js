@@ -23,8 +23,8 @@ class ProjectCard extends React.Component {
 				baseColor: '#848C8E'
 			},
 
-			html: {
-				themeName: 'html',
+			css: {
+				themeName: 'css',
 				hoverColor: '#DCF763',
 				strokeWidth: 18,
 				baseColor: '#848C8E'
@@ -66,10 +66,15 @@ class ProjectCard extends React.Component {
 
 			case('js'):
 				return 's-has-js-theme';
+
+			default:
+				return null;
 		}
 	}
 
 	render() {
+		// the theme prop is passed by ProjectGrid container.  
+		// All graphicThemes are currently defined in local state (above).
 		const {title, children, theme} = this.props;
 		const graphicTheme = this.state.themes[theme];
 
