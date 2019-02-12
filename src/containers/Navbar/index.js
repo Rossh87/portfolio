@@ -1,61 +1,81 @@
 import React from 'react';
+import {withRouter} from 'react-router';
 
 // Local components
 import LinkItem from 'legos/LinkItem';
+import Hamburger from 'legos/Hamburger';
 
 import './styles.scss';
 
-const Navbar = ({navIsOpen, handleClick}) => {
+class Navbar extends React.Component {
+	state = {
+		isOpen: false
+	}
 
-	const getNavClasses = () => {	
-		return navIsOpen ?
+	handleClick = (e) => {
+		this.setState(prev => {
+			return {
+				isOpen: !prev.isOpen
+			}
+		});
+	}
+
+	getNavClasses = () => {	
+		return this.state.isOpen ?
 			"c-nav s-is-open"
 			: "c-nav"
 	}
 
-	return(
-			<nav className={getNavClasses()}>
-				<ul className="c-nav_menu">
+	render() {
+		return(
+			<div className = "l-nav-anchor">
+				<Hamburger handleClick={this.handleClick} />
+				<nav className={this.getNavClasses()}>
+					<ul className="c-nav_menu">
 
-					<LinkItem
-							styleClass="c-nav_item"
-							isLinkComponent={true}
-							clickHandler={handleClick}
-							path={'/'}
+						<LinkItem
+								styleClass="c-nav_item"
+								isLinkComponent={true}
+								clickHandler={this.handleClick}
+								path={'/'}
 						>
-						Home
-					</LinkItem>
+							Home
+						</LinkItem>
 
-					<LinkItem
-						styleClass="c-nav_item"
-						isLinkComponent={true}
-						clickHandler={handleClick}
-						path={'/about'}
-					>
-						About
-					</LinkItem>
+						<LinkItem
+							styleClass="c-nav_item"
+							isLinkComponent={false}
+							clickHandler={this.handleClick}
+							path={'#about'}
+						>
+							About
+						</LinkItem>
 
-					<LinkItem
-						styleClass="c-nav_item"
-						isLinkComponent={true}
-						clickHandler={handleClick}
-						path={'/projects'}
-					>
-						Projects
-					</LinkItem>
+						<LinkItem
+							styleClass="c-nav_item"
+							isLinkComponent={false}
+							clickHandler={this.handleClick}
+							path={'#skills'}
+						>
+							Projects
+						</LinkItem>
 
-					<LinkItem
-						styleClass="c-nav_item"
-						isLinkComponent={true}
-						clickHandler={handleClick}
-						path={'/contact'}
-					>
-						Contact
-					</LinkItem>
-					
-				</ul>
-			</nav>
+						<LinkItem
+							styleClass="c-nav_item"
+							isLinkComponent={false}
+							clickHandler={this.handleClick}
+							path={'#contact'}
+						>
+							Contact
+						</LinkItem>
+						
+					</ul>
+				</nav>
+			</div>
 		)
+	}
 }
 
-export default Navbar;
+// To facilitate sticky positioning, the Navbar component will live outside
+// the <Router> provider, so we add router functionality with a HOC
+export default withRouter(Navbar);

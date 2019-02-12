@@ -12,10 +12,13 @@ class ContactForm extends React.Component {
 
 	render() {
 		return(
+			<React.Fragment>
+			<div></div>
 			<BaseForm
 				handleFormSubmission={this.handleSubmit}
 				fields={['name', 'email', 'message']}
 			/>
+			</ React.Fragment>
 		);
 	}
 }

@@ -61,8 +61,8 @@ class ProjectCard extends React.Component {
 			case('react'):
 				return 's-has-react-theme';
 
-			case('html'):
-				return 's-has-html-theme';
+			case('css'):
+				return 's-has-css-theme';
 
 			case('js'):
 				return 's-has-js-theme';

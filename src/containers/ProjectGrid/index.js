@@ -9,7 +9,8 @@ class ProjectGrid extends React.Component {
 
 	render() {
 
-		// Pass desired theme to ProjectCard component
+		// Pass desired theme to ProjectCard component.
+		
 		return(
 			<div className="projectGrid">
 				<ProjectCard title="react" theme="react" >

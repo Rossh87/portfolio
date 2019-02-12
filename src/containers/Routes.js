@@ -2,7 +2,7 @@ import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 
 // local components
-import Main from 'containers/Main';
+import Homepage from 'components/Homepage';
 import ProjectPage from 'containers/ProjectPage';
 
 class Routes extends React.Component {
@@ -10,7 +10,7 @@ class Routes extends React.Component {
 		return(
 				<Switch>
 
-					<Route exact path='/' component={Main} />
+					<Route exact path='/' component={Homepage} />
 
 					<Route path='/projects/:projectType' component={ProjectPage} />
 

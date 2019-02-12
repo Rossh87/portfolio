@@ -10,9 +10,6 @@ const About = (props) => {
 				<h1>About Me</h1>
 			</div>
 
-			<div className="c-about_meter">
-			</div>
-
 			<div className="c-about_text">
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo accusantium, eius, excepturi accusamus repellat, doloremque molestias dolore exercitationem sint recusandae officia inventore deleniti et eos quasi nihil nobis. Deserunt pariatur animi temporibus velit eius veritatis. Eveniet voluptatibus quia, sunt a?
 				</p>
