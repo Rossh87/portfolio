@@ -2,11 +2,12 @@ import React from 'react';
 
 // Local component
 import Routes from '../Routes';
-import Wrapper from '../Wrapper';
 import Navbar from '../Navbar';
 import Hero from 'components/Hero';
 
-class Main extends React.Component {
+import './styles.scss';
+
+class HeroManager extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -29,12 +30,12 @@ class Main extends React.Component {
 		}, 500);
 	}
 
-	componentDidMount() {
-		window.addEventListener('scroll', this.manageHero)
-	}
+	// componentDidMount() {
+	// 	window.addEventListener('wheel', this.manageHero)
+	// }
 
 	componentWillUnmount() {
-		window.removeEventListener('scroll', this.manageHero);
+		window.removeEventListener('wheel', this.manageHero);
 		clearTimeout(this.timerID);
 	}
 
@@ -51,24 +52,12 @@ class Main extends React.Component {
 		}
 	}
 
-	renderHero() {
+	render() {
 		return this.state.heroIsMounted ?
 			<Hero dismissHero={this.dismissHero} isOpen={this.state.heroIsOpen} />
 			:
 			null;
 	}
-
-	render() {
-		return (
-			<React.Fragment>
-			{this.renderHero()}
-				<Navbar />
-				<Wrapper>
-					<Routes />
-				</Wrapper>
-			</React.Fragment>
-		)
-	}
 }
 
-export default Main;
+export default HeroManager;
