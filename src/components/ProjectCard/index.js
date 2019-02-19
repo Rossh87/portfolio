@@ -1,17 +1,19 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+// Component to determine which graphic gets rendered inside
+// ProjectCard based on the theme passed in props
 import GraphicSwitch from 'graphicComponents/GraphicSwitch';
+
+// HOC adds behaviors that track mouse hover @ large screen sizes,
+// & also track scroll position @ small sizes or if no mouse is present.
+import withHoverBehaviors from 'hocs/withHoverBehaviors';
+
 import './styles.scss';
 
 class ProjectCard extends React.Component {
-	// Tracking hovered state locally allows the component's hover
-	// status to be passed as a prop to embedded graphic component. 
-	// This allows the ProjectCard component and the graphic component to be 
-	// modular (css is not tightly-coupled), and for complete ProjectCards to 
-	// be generated programatically by parent component.
 	state = {
-		isHovered: false,
-
 		// themes are locally defined for now.
 		// Opportunity to modularize this to accept external 'theme'
 		// objects in the future.
@@ -39,53 +41,42 @@ class ProjectCard extends React.Component {
 		}
 	};
 
-	handleMouseEnter = e => {
-		this.setState({
-			isHovered: true
-		});
-	}
-
-	handleMouseLeave = e => {
-		this.setState({
-			isHovered: false
-		});
-	}
-
 	// This is one potential limitation of no css-in-js:
 	// lots of duplicated css to differentiate one small animation
 	// effect.
 	getClassNames() {
-		const {theme} = this.props;
+		const {theme, isHovered} = this.props;
 
-		switch(theme){
-			case('react'):
-				return 's-has-react-theme';
-
-			case('css'):
-				return 's-has-css-theme';
-
-			case('js'):
-				return 's-has-js-theme';
-
-			default:
-				return null;
-		}
+		return isHovered ?
+			`c-skillCard s-has-${theme}-theme`
+			:
+			'c-skillCard';
 	}
 
 	render() {
 		// the theme prop is passed by ProjectGrid container.  
 		// All graphicThemes are currently defined in local state (above).
-		const {title, children, theme} = this.props;
+		const {
+			title,
+			children,
+			theme,
+			isHovered,
+			HOCRef,
+			handleMouseEnter,
+			handleMouseLeave,
+		} = this.props;
+
 		const graphicTheme = this.state.themes[theme];
 
 		return(
 			<div 
-				onMouseEnter={this.handleMouseEnter}
-				onMouseLeave={this.handleMouseLeave}
-				className={`c-skillCard ${this.getClassNames()}`}
+				ref={HOCRef}
+				className={this.getClassNames()}
+				onMouseEnter={()=> handleMouseEnter()}
+				onMouseLeave={()=> handleMouseLeave()}
 			>
 				<Link className='c-skillCard_link' to={`/projects/${theme}`}>
-					<GraphicSwitch graphicTheme={graphicTheme} isHovered={this.state.isHovered}/>
+					<GraphicSwitch graphicTheme={graphicTheme} isHovered={isHovered}/>
 
 					<div className="c-skillCard_text">
 						<h1 className="c-skillCard_title">{title}</h1>
@@ -97,4 +88,21 @@ class ProjectCard extends React.Component {
 	}
 }
 
-export default ProjectCard;
+export default withHoverBehaviors(ProjectCard);
+
+
+ProjectCard.propTypes = {
+	title: PropTypes.string.isRequired,
+	children: PropTypes.oneOfType([
+   		PropTypes.arrayOf(PropTypes.node),
+    	PropTypes.node
+	]).isRequired,
+	theme: PropTypes.string.isRequired,
+	isHovered: PropTypes.bool.isRequired,
+	HOCRef: PropTypes.oneOfType([
+		PropTypes.shape({current: PropTypes.instanceOf(Element)}),
+		PropTypes.func
+	]),
+	handleMouseEnter: PropTypes.func.isRequired,
+	handleMouseLeave: PropTypes.func.isRequired
+}

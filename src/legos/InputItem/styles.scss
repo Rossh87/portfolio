@@ -1,7 +1,7 @@
 @import 'commonStyles/_colors.scss';
 
 .c-text-input {
-	width: 75%;
+	width: 100%;
 }
 
 .c-text-input_label {
@@ -18,8 +18,8 @@
 	}
 }
 
-.c-text-input_input {
-	padding: .5rem;
+.c-text-input_input, .c-text-input_area {
+	padding: 1rem;
 	display: block;
 	width: 100%;
 	border: none;
@@ -27,3 +27,14 @@
 	background-color: lighten($dark, 25%);
 	outline-color: $accent;
 }
+
+.c-text-input_area {
+	height: 18vh;
+}
+
+// @media screen and (min-width: 590px) {
+// 	.c-text-input {
+// 		width: 70%;
+// 	}
+// }
+

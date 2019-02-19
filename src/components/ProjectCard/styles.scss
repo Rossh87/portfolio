@@ -11,21 +11,21 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	transition: color .25s;
 
-	&:hover {
-		transform: scale(1.0075) translate(2px, 2px);
-	}
-
-	&.s-has-react-theme:hover {
+	&.s-has-react-theme {
 		animation: reactBorder .25s linear forwards;
+		color: darken($react-blue, 10%);
 	}
 
-	&.s-has-css-theme:hover {
-		animation: htmlBorder .2s ease-in-out forwards;
+	&.s-has-css-theme {
+		animation: htmlBorder .2s linear forwards;
+		color: $highlight-trans;
 	}
 
-	&.s-has-js-theme:hover {
+	&.s-has-js-theme{
 		animation: jsBorder .25s linear forwards;
+		color: $js-red;
 	}
 }
 
@@ -64,84 +64,90 @@
 
 	from {
 		border: 2px solid $silver;
+		transform: scale(1) translate(0,0);
 	}
 
 	25% {
 		border: 2px solid $silver;
-		border-top: 2px solid $accent;
+		border-top: 2px solid $highlight;
 	}
 
 	50% {
 		border: 2px solid $silver;
-		border-right: 2px solid $accent;
+		border-right: 2px solid $highlight;
 	}
 
 	75% {
 		border: 2px solid $silver;
-		border-bottom: 2px solid $accent;
+		border-bottom: 2px solid $highlight;
 	}
 
 	to {
 		border: 2px solid $silver;
-		border-left: 2px solid $accent;
+		border-left: 2px solid $highlight;
+		transform: scale(1.0075) translate(2px, 2px);
 	}
 }
 
 @keyframes reactBorder {
 	from {
 		border: 2px solid transparent;
+		transform: scale(1) translate(0, 0);
 	}
 
 	25% {
 		border: 2px solid transparent;
-		border-top: 2px solid #61dafb;
+		border-top: 2px solid $react-blue;
 	}
 
 	50% {
 		border: 2px solid transparent;
 		border-top: 2px solid $silver;
-		border-right: 2px solid #61dafb;
+		border-right: 2px solid $react-blue;
 	}
 
 	75% {
 		border: 2px solid transparent;
 		border-top: 2px solid $silver;
 		border-right: 2px solid $silver;
-		border-bottom: 2px solid #61dafb;
+		border-bottom: 2px solid $react-blue;
 	}
 
 	to {
 		border: 2px solid $silver;
-		border-left: 2px solid #61dafb;
+		border-left: 2px solid $react-blue;
+		transform: scale(1.0075) translate(2px, 2px);
 	}
 }
 
 @keyframes jsBorder {
 	from {
 		border: 2px solid transparent;
+		transform: scale(1) translate(0,0);
 	}
 
 	25% {
 		border: 2px solid transparent;
-		border-top: 2px solid #b00000;
+		border-top: 2px solid $js-red;
 	}
 
 	50% {
 		border: 2px solid transparent;
 		border-top: 2px solid $silver;
-		border-right: 2px solid #b00000;
+		border-right: 2px solid $js-red;
 	}
 
 	75% {
 		border: 2px solid transparent;
 		border-top: 2px solid $silver;
 		border-right: 2px solid $silver;
-		border-bottom: 2px solid #b00000;
+		border-bottom: 2px solid $js-red;
 	}
 
 	to {
 		border: 2px solid $silver;
-		border-left: 2px solid #b00000;
+		border-left: 2px solid $js-red;
+		transform: scale(1.0075) translate(2px, 2px);
 	}
 }
 

@@ -1,0 +1,52 @@
+@import 'commonStyles/_colors.scss';
+
+.c-contact {
+	display: grid;
+	grid-template-areas: 
+		"text"
+		"form";
+}
+
+.c-contact_form {
+	grid-area: form;
+}
+
+.c-contact_text {
+	grid-area: text;
+}
+
+.c-contact_flash {
+	overflow: hidden;
+	text-align: center;
+	font-style: italic;
+	font-size: 1.2rem;
+	background-color: $highlight-trans;
+	border: 2px solid $highlight;
+	border-radius: 10px;
+	padding: 0.5rem;
+	margin: .5rem 0 0;
+	animation: slide-in .5s forwards;
+}
+
+@media screen and (min-width: 900px) {
+	.c-contact {
+		grid-template-areas: 
+			"form text";
+
+		grid-template-columns: 3fr 2fr;
+	}
+
+	.c-contact_text {
+		padding: 1.5rem;
+	}
+}
+
+@keyframes slide-in {
+	from {
+		transform: translateY(-2rem);
+	}
+
+	to {
+		transform: translateY(0);
+	}
+}

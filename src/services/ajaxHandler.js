@@ -1,33 +1,21 @@
-// export function fetchAjax(path) {
-// 	return fetch(`http://localhost:8001/projects/${path}`)
-// 		.then(res => verifyResponseOk(res))
-// 		.then(res => res.json())
-// 		.catch(err => console.error(err))
-// }
+import axios from 'axios';
 
-export async function asyncFetchAjax(path) {
+const REACT_APP_API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
+
+async function ajaxHandler(method, path, data) {
 	try {
-		const res = await fetch(`http://localhost:8001/projects/${path}`);
+		const response = await axios[method](`${REACT_APP_API_ENDPOINT}/${path}`, data);
 
-		verifyResponseOk(res);
-
-		return await res.json();
+		return response.data;
 	}
 
+	// Here we log errors, then re-throw to pass them to handlers defined 
+	// in the components that actually use this function.
 	catch(err) {
 		console.error(err);
+		throw(err);
 	}
-}
+};
 
-function verifyResponseOk(res) {
-	// B/c promise returned by fetch does *not* reject on bad status code
-	// we create a handler to test response once it resolves.  W/e is thrown here
-	// will be picked up by the 'catch' block above.
-	if(!res.ok || res.status > 299) {
-		throw(res)
-	}
-
-	return res;
-}
-
+export default ajaxHandler;
 

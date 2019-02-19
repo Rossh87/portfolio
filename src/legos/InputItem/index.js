@@ -2,30 +2,58 @@ import React from 'react';
 
 import './styles.scss';
 
-const InputItem = ({fieldName, id, value, handleChange, hasFocus, handleFocus, handleBlur}) => {
+const InputItem = (props) => {
 
+	const {
+		name,
+		id,
+		value,
+		handleChange,
+		hasFocus, 
+		handleFocus, 
+		handleBlur,
+		type, 
+		children
+	} = props;
+
+	const buildInput = () => {
+		return type === 'textarea' ?
+			<textarea
+				rows='10'
+				cols='40'
+				onFocus={handleFocus}
+				onBlur={handleBlur}
+				className='c-text-input_area'
+				id={name + id}
+				onChange={handleChange}
+				name={name}
+				value={value}
+			/>
+			:
+			<input 
+				onFocus={handleFocus}
+				onBlur={handleBlur}
+				className='c-text-input_input'
+				id={name + id}
+				onChange={handleChange}
+				name={name}
+				value={value}
+			/>
+	}
+	
 	return(
 		<div className='c-text-input'>
 			<label 
-				htmlFor={fieldName + id}
+				htmlFor={name + id}
 				className={hasFocus || value ? 
 					'c-text-input_label s-has-focus'
 					: 'c-text-input_label'
 				}
 			>
-				{fieldName}
+				{name}
 			</label>
 
-			<input
-				onFocus={handleFocus}
-				onBlur={handleBlur}
-				className='c-text-input_input'
-				id={fieldName + id}
-				type="text"
-				onChange={handleChange}
-				name={fieldName}
-				value={value}
-			/>
+			{buildInput()}
 		</div>
 	)
 }

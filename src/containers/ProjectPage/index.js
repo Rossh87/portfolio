@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Get services
-import {asyncFetchAjax} from 'services/ajaxHandler';
+import ajaxHandler from 'services/ajaxHandler';
 
 // Get local components
 import ProjectSection from 'components/ProjectSection';
@@ -21,8 +21,7 @@ class ProjectPage extends React.Component {
 
 		// Ajax handler hardcoded to hit API route, only need final path
 		// extension for now
-		const projectsArray = await asyncFetchAjax(projectType);
-		debugger;
+		const projectsArray = await ajaxHandler('get', `projects/${projectType}`);
 
 		this.setState({projects: [...projectsArray]});
 	}

@@ -2,8 +2,7 @@
 
 .c-hamburger {
 	position: absolute;
-	top: 2rem;
-	left: 5%;
+	top: .5rem;
 	z-index: 10;
 	cursor: pointer;
 }
@@ -11,7 +10,7 @@
 %hamburger-shared {
 	display: block;
 	content: '';
-	width: 2em;
+	width: 2rem;
 	height: 3px;
 	background-color: $dark;
 	transition: all 250ms linear;

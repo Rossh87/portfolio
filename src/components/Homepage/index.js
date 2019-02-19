@@ -10,8 +10,6 @@ import Divider from 'legos/Divider';
 const Homepage = props => {
 	return(
 		<React.Fragment>
-			<IntroHeading />
-			<Divider id="skills">Skills</Divider>
 			<ProjectGrid />
 			<Divider id="about"></Divider>
 			<About />
