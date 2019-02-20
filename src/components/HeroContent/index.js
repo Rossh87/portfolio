@@ -6,6 +6,7 @@ import shortid from 'shortid';
 import './styles.scss';
 
 const HeroContent = (props) => {
+	// increment/decrement are passed by wrapping AnimatedComponentSwap component
 	const {
 		incrementIndex, 
 		decrementIndex,
@@ -37,7 +38,7 @@ const HeroContent = (props) => {
 				<p className="c-hero_content">
 					{content}
 				</p>
-				<div className="c-hero_arrow"></div>
+				<div onClick={incrementIndex} className="c-hero_arrow"></div>
 			</React.Fragment>	
 		);
 	};

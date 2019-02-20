@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 
-// Get shared styles.  Note:
-// In all files, non-relative paths of type
-//.scss are resolved using the 
-// SASS_PATH environment variable.
+// Get shared styles. 
 import 'commonStyles/_base.scss';
 import 'commonStyles/_colors.scss';
 
@@ -14,6 +12,8 @@ import App from './containers/App';
 const root = document.querySelector('#root');
 
 ReactDOM.render(
-	<App />,
+	<Router>
+		<App />
+	</Router>,
 	root
 );

@@ -1,62 +1,63 @@
 @import 'commonStyles/_colors.scss';
 
 .c-skillCard {
-	min-width: 220px;
-	max-width: 300px;
-	border: 2px solid $silver;
-	flex: 1 1 0;
+	box-shadow: -1px 2px 4px $silver;
+	margin: 1.5rem 0;
+	font-size: 1.2rem;
 	padding: 1rem;
-	margin: .5rem .5rem;
+	display: grid;
+	border: 5px solid transparent;
 	color: $dark;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	transition: color .25s;
+	display: grid;
+	grid: "skillCard_graphic" 1fr "skillCard_text" 1fr;
 
 	&.s-has-react-theme {
-		animation: reactBorder .25s linear forwards;
+		animation: reactBorder .3s linear forwards;
 		color: darken($react-blue, 10%);
 	}
 
 	&.s-has-css-theme {
-		animation: htmlBorder .2s linear forwards;
+		animation: htmlBorder .3s linear forwards;
 		color: $highlight-trans;
 	}
 
 	&.s-has-js-theme{
-		animation: jsBorder .25s linear forwards;
+		animation: jsBorder .3s linear forwards;
 		color: $js-red;
 	}
 }
 
-.c-skillCard_link {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+.c-skillCard_graphic {
+	grid-area: skillCard_graphic;
 }
 
 .c-skillCard_text {
-	background-color: $white;
-	border-bottom-left-radius: 5px;
-	border-bottom-right-radius: 5px;
-	height: 10rem;
-	width: 90%;
-	display: flex;
-	flex-direction: column;
-}
-
-.c-skillCard_title {
-	border-bottom: 1px solid $dark;
+	grid-area: skillCard_text;
+	text-align: center;
+	align-self: center;
 }
 
 .c-skillCard_content {
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	padding: 1rem;
 }
+
+.c-skillCard_button {
+	font-size: 1.1rem;
+	cursor: pointer;
+}
+
+@media screen and (min-width: 495px) {
+	.c-skillCard {
+		grid: auto / repeat(2, 1fr);
+		grid-template-areas: "skillCard_graphic skillCard_text";
+
+		&.s-is-inverted{
+			grid-template-areas: "skillCard_text skillCard_graphic";
+		}
+	}
+}
+
+
 
 // Animation definitions below
 
@@ -92,7 +93,7 @@
 @keyframes reactBorder {
 	from {
 		border: 2px solid transparent;
-		transform: scale(1) translate(0, 0);
+		transform: scale(1) translate(0,0);
 	}
 
 	25% {

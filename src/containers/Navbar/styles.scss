@@ -31,6 +31,7 @@
 	height: 100%;
 	flex-direction: column;
 	justify-content: space-around;
+	font-weight: 600;
 }
 
 .c-nav_item {
@@ -41,3 +42,32 @@
 	}
 }
 
+@media screen and (min-width: 550px) {
+	.c-nav {
+		position: sticky;
+		top: 30px;
+		height: auto;
+		background-color: white;
+	}
+
+	.c-nav_menu {
+		display: flex;
+		flex-direction: row;
+		width: 80%;
+		margin: auto;
+		border-bottom: 2px solid $highlight;
+	}
+
+	.c-nav_item {
+		padding: 1rem;
+		&:hover {
+			background-color: initial;
+		}
+	}
+}
+
+@media screen and (max-width: 850px) {
+	.c-nav {
+		font-size: 1.5rem;
+	}
+}

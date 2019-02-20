@@ -5,6 +5,7 @@ import {Route, Switch} from 'react-router-dom';
 import Homepage from 'pages/Homepage';
 import ProjectPage from 'pages/ProjectPage';
 import Navbar from 'containers/Navbar';
+import Footer from 'components/Footer';
 
 import './styles.scss';
 
@@ -23,6 +24,8 @@ class Routes extends React.Component {
 
 					</Switch>
 				</div>
+
+				<Footer />
 			</React.Fragment>
 
 		)

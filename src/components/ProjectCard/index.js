@@ -3,12 +3,14 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 // Component to determine which graphic gets rendered inside
-// ProjectCard based on the theme passed in props
+// ProjectCard based on the theme passed in props.
 import GraphicSwitch from 'graphicComponents/GraphicSwitch';
 
 // HOC adds behaviors that track mouse hover @ large screen sizes,
 // & also track scroll position @ small sizes or if no mouse is present.
 import withHoverBehaviors from 'hocs/withHoverBehaviors';
+
+import Button from 'legos/Button';
 
 import './styles.scss';
 
@@ -41,21 +43,23 @@ class ProjectCard extends React.Component {
 		}
 	};
 
-	// This is one potential limitation of no css-in-js:
-	// lots of duplicated css to differentiate one small animation
-	// effect.
 	getClassNames() {
-		const {theme, isHovered} = this.props;
+		const {theme, isHovered, isInverted} = this.props;
+
+		const baseName = isInverted ?
+			'c-skillCard'
+			:
+			'c-skillCard s-is-inverted';
 
 		return isHovered ?
-			`c-skillCard s-has-${theme}-theme`
+			`${baseName} s-has-${theme}-theme`
 			:
-			'c-skillCard';
+			`${baseName}`;
 	}
 
 	render() {
-		// the theme prop is passed by ProjectGrid container.  
 		// All graphicThemes are currently defined in local state (above).
+		// HOCRef and mouse handlers are passed by wrapping HOC (below);
 		const {
 			title,
 			children,
@@ -63,7 +67,7 @@ class ProjectCard extends React.Component {
 			isHovered,
 			HOCRef,
 			handleMouseEnter,
-			handleMouseLeave,
+			handleMouseLeave
 		} = this.props;
 
 		const graphicTheme = this.state.themes[theme];
@@ -72,17 +76,29 @@ class ProjectCard extends React.Component {
 			<div 
 				ref={HOCRef}
 				className={this.getClassNames()}
-				onMouseEnter={()=> handleMouseEnter()}
-				onMouseLeave={()=> handleMouseLeave()}
+				onMouseEnter={handleMouseEnter}
+				onMouseLeave={handleMouseLeave}
 			>
-				<Link className='c-skillCard_link' to={`/projects/${theme}`}>
-					<GraphicSwitch graphicTheme={graphicTheme} isHovered={isHovered}/>
+				
+					<div className="c-skillCard_graphic">
+						<GraphicSwitch 
+							graphicTheme={graphicTheme}
+							isHovered={isHovered}
+						/>
+					</div>
 
 					<div className="c-skillCard_text">
 						<h1 className="c-skillCard_title">{title}</h1>
 						<p className="c-skillCard_content">{children}</p>
+						<Link to={`/projects/${theme}`}>
+							<Button 
+								receivedClassName='c-skillCard_button'
+							>
+								Go To Projects
+							</Button>
+						</Link>
 					</div>
-				</Link>
+				
 			</div>
 		)
 	}

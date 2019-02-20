@@ -2,10 +2,11 @@
 
 .c-reactGraphic {
 	width: 100%;
-	height: 100%;
+	height: 120%;
 	transition: .2s all;
 	stroke: $white;
 	fill: $silver;
+	transform: translateY(-1.4rem);
 
 	&.s-is-hovered {
 		fill: $react-blue;

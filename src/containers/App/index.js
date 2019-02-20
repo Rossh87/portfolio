@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router} from 'react-router-dom';
 
 // Local components
-import Navbar from '../Navbar';
 import Routes from '../Routes';
 
 

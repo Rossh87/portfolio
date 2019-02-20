@@ -1,0 +1,88 @@
+@import 'commonStyles/_colors.scss';
+
+// Define vars for use in hover effect
+$map: (
+	1: $dark,
+	2: $silver,
+	3: $white
+);
+
+$hover-map: (
+	1: 1,
+	2: 0.5,
+	3: 0.25
+);
+
+.c-about {
+	height: 50vh;
+	position: relative;
+
+	&.s-is-hovered {
+
+		.c-about_splash {
+			transform: scale(5);
+			opacity: 1;
+		}
+
+		@each $key, $opacity in $hover-map {
+			.c-about_splash--stop#{$key} {
+				stop-color: $accent;
+				stop-opacity: $opacity;
+			}
+		} 
+	}
+}
+
+.c-about_text {
+	width: 100%;
+	z-index: 5;
+	position: absolute;
+	top: 20%;
+	text-align: center;
+	font-size: 1.4rem;
+}
+
+.c-about_splash {
+	height: 15%;
+	opacity: .5;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 45%;
+	margin: 0 auto;
+	transition: .5s ease transform;
+}
+
+@media screen and (min-width: 875px) {
+	.c-about {
+		height: 30vh;
+	}
+}
+
+@media screen and (min-width: 875px) {
+	.c-about {
+		height: 30vh;
+	}
+	.c-about_text {
+		width: 75%;
+		left: 12.5%;
+	}
+
+	.c-about_splash {
+		top: 35%;
+	}
+}
+
+@media screen and (min-width: 1295px) {
+	.c-about_splash {
+		top: 32%;
+	}
+}
+
+@each $key, $color in $map {
+	.c-about_splash--stop#{$key} {
+		stop-color: $color;
+	}
+}
+
+

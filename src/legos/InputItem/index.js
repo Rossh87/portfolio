@@ -12,8 +12,7 @@ const InputItem = (props) => {
 		hasFocus, 
 		handleFocus, 
 		handleBlur,
-		type, 
-		children
+		type
 	} = props;
 
 	const buildInput = () => {

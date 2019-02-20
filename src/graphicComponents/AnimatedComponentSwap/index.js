@@ -1,24 +1,19 @@
 import React from 'react';
 
-// Get util for key IDs
-import shortid from 'shortid';
+// Function to limit fire rate of scroll listener callbacks
+import limitFireRate from 'services/limitFireRate';
 
 import './styles.scss';
 
 class AnimatedComponentSwap extends React.Component {
 	constructor(props) {
 		super(props);
+		
+		this._limitedScrollListener = limitFireRate(this.scrollListener, 500);
 
-		// These variables don't need to be, and in fact should *not* 
-		// be in 'oficial' state b/c they don't directly govern UI.  Also,
-		// Setstate calls are async, which leads to very glitchy behavior when
-		// governing scroll.
-		this.timeoutID = null;
-		this.canFire = true;
 		this.scrollCount = 0;
-		this.itemCount = this.props.children.length;
 
-		this._manageScrollListener = this.manageScrollListener.bind(this);
+		this.itemCount = this.props.children.length;
 
 		this.state = {
 			isShownIndex: 0
@@ -34,25 +29,19 @@ class AnimatedComponentSwap extends React.Component {
 	}
 
 	componentDidMount() {
-		window.addEventListener('scroll', this._manageScrollListener)
+		window.addEventListener('scroll', this._limitedScrollListener.callback)
 	}
 
 	componentWillUnmount() {
-		console.log('unmount');
-		window.removeEventListener('scroll', this._manageScrollListener);
-		clearTimeout(this.timeoutID);
+		window.removeEventListener('scroll', this._limitedScrollListener.callback);
+		clearTimeout(this._limitedScrollListener.timer);
 	}
 
-	manageScrollListener(e){
-		const {canFire, scrollCount} = this;
+	scrollListener = (e) => {
+		console.log('trigger')
 		window.scrollTo(0, 0);
-		
-		if(canFire) {
-			this.canFire = false;
-			this.timeoutID = setTimeout(() => this.canFire = true, 400);
-			this.scrollCount++;
-			this.manageIndexOnScroll()
-		}
+		this.scrollCount++;
+		this.manageIndexOnScroll();
 	}
 
 	manageIndexOnScroll() {
@@ -65,7 +54,7 @@ class AnimatedComponentSwap extends React.Component {
 		if(scrollCount > itemCount){
 			window.removeEventListener('scroll', this._manageScrollListener);
 			this.props.dismissHero();
-			window.scrollTo(0, 1);
+			window.scrollTo(0, 50);
 		}
 	}
 

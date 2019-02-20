@@ -45,7 +45,8 @@ class ContactForm extends React.Component {
 
 	render() {
 		// Property 'fields' on baseform accepts an object describing the desired fields 
-		// in the returned form.  All fields must have a name (string) and type (string).  Acceptable types are 
+		// in the returned form.  All fields must have a name (string) and type (string).  
+		// Acceptable types are 
 		// currently 'text' and 'textarea';
 		return(
 			<section className="c-contact">

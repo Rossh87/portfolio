@@ -15,19 +15,19 @@ function withHoverBehaviors(Wrapped) {
 				hasScrollListener: false,
 				isHovered: false
 			}
-
-			this.handleMouseEnter = this.handleMouseEnter.bind(this);
-			this.handleMouseLeave = this.handleMouseLeave.bind(this);
 		}
 
 		componentDidMount() {
-			const {hasScrollListener} = this.state;
+			// Add scroll-based hovering any time a touch event occurs
+			window.addEventListener('touchstart', this.addScrollListener);
 
+			// Add scroll-based hovering any time viewport is smaller
+			// than a given width.
 			if(window.innerWidth < 500) {
-				window.addEventListener('scroll', this.controlHoverForMobile);
-				this.setState({hasScrollListener: true});
+				this.addScrollListener()
 			};
 
+			// Add listener to implement above logic on viewport resize.
 			window.addEventListener('resize', this.resizeCallback);
 		}
 
@@ -37,50 +37,60 @@ function withHoverBehaviors(Wrapped) {
 			}
 
 			window.removeEventListener('resize', this.resizeCallback);
+			window.removeEventListener('touchstart', this.controlHoverForMobile);
 		}
 
 		resizeCallback = () => {
+			if(window.innerWidth < 500) {
+				this.addScrollListener()
+			};
+		}
+
+		addScrollListener = () => {
 			const {hasScrollListener} = this.state;
 
-			if(!hasScrollListener && window.innerWidth <= 500) {
+			// Ensure that window resize does not lead to multiple listeners
+			if(!hasScrollListener) {
 				window.addEventListener('scroll', this.controlHoverForMobile);
 				this.setState({hasScrollListener: true});
-			}
-
-			if(hasScrollListener && window.innerWidth > 500) {
-				window.removeEventListener('scroll', this.controlHoverForMobile);
-				this.setState({hasScrollListener: false, isHovered: false});
 			}
 		}
 
 		controlHoverForMobile = () => {
-			const midpoint = (window.innerHeight / 2);
-			const {top, bottom} = this.HOCRef.current.getBoundingClientRect();
+			const height = window.innerHeight;
+			const width = window.innerWidth;
+			const hasBroken = width > 495;
+
+			// Shenanigans here to increase the height of the 'trigger'
+			// area if the layout has gone horizontal for wider screens.
+			const breakPoint = hasBroken ?
+				height / 2
+				:
+				height / 3;
+
+			let {top, bottom} = this.HOCRef.current.getBoundingClientRect();
+
+			if(hasBroken) {
+				top -= 50;
+				bottom += 50;
+			}
 			
 
-			if(midpoint > top && midpoint <= bottom) {
+			if(breakPoint > top && breakPoint <= bottom) {
 				this.setState({isHovered: true});
 			}
 
-			if(midpoint > bottom || midpoint < top){
+			if(breakPoint > bottom || breakPoint < top){
 				this.setState({isHovered: false});
 			}
 		}
 
-		handleMouseEnter() {
-			if(!this.state.isHovered) {
-				this.setState({isHovered: true});
-			}
+		handleMouseEnter = () => {
+			this.setState({isHovered: true});
 		}
 
-		handleMouseLeave(){
-			if(this.state.isHovered) {
-				this.setState({isHovered: false});
-			}
-		}
-
-		testFnProp() {
-
+		handleMouseLeave = () => {
+			this.setState({isHovered: false});
 		}
 
 		render() {

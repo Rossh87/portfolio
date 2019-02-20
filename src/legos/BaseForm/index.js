@@ -128,7 +128,12 @@ class BaseForm extends React.Component {
 		return(
 			<form className="c-form" onSubmit={this.handleFormSubmit}> 
 				{this.populateInputs()}
-				<Button passedStyles="c-form_button" btnType ='submit'>Submit</Button>
+				<Button 
+					receivedClassName="c-form_button"
+					btnType ='submit'
+				>
+					Send Message
+				</Button>
 			</form>
 		)
 	}

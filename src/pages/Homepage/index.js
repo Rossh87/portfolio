@@ -1,19 +1,19 @@
 import React from 'react';
 
 // Get local components
-import IntroHeading from 'components/IntroHeading';
-import ProjectGrid from 'containers/ProjectGrid';
-import About from 'components/About';
+
 import ContactForm from 'containers/ContactForm';
 import Divider from 'legos/Divider';
+import ProjectListGrid from 'components/ProjectListGrid';
+import HomeAboutSection from 'components/HomeAboutSection';
 
 const Homepage = props => {
 	return(
 		<React.Fragment>
-			<ProjectGrid />
-			<Divider id="about"></Divider>
-			<About />
-			<Divider id="contact">Collaborate</Divider>
+			<HomeAboutSection />
+			<Divider id='skills'>Skills</Divider>
+			<ProjectListGrid />
+			<Divider id='contact'>Contact</Divider>
 			<ContactForm />
 		</React.Fragment>
 	)

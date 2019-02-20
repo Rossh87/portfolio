@@ -7,6 +7,11 @@ import Hamburger from 'legos/Hamburger';
 
 import './styles.scss';
 
+// Separate stylesheet for hover/focus behaviors to keep css file lengths
+// readable.
+import './hover-effects.scss'
+
+
 class Navbar extends React.Component {
 	state = {
 		isOpen: false
