@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 
 const JSSvg = ({graphicTheme, isHovered}) => {
+
 	const buildSvgClassName = () => {
 		return isHovered ?
 			'c-jsGraphic s-is-hovered'
@@ -12,14 +13,12 @@ const JSSvg = ({graphicTheme, isHovered}) => {
 	}
 
 	return(
-		<div className="c-jsGraphic_anchor">
-			<div className={isHovered ?"c-jsGraphic_background s-is-hovered" : "c-jsGraphic_background"}></div>
+
 			<FaJs 
 				fill={graphicTheme.baseColor} 
 				strokeWidth={graphicTheme.strokeWidth} 
 				className={buildSvgClassName()}
 			/>
-		</div>
 	)
 }
 
@@ -35,3 +34,6 @@ JSSvg.propTypes = {
 
 	isHovered: PropTypes.bool.isRequired
 };
+
+		// <div className="c-jsGraphic_anchor">
+		// 	<div className={isHovered ?"c-jsGraphic_background s-is-hovered" : "c-jsGraphic_background"}></div>

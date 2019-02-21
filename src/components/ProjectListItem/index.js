@@ -3,20 +3,23 @@ import PropTypes from 'prop-types';
 
 import './styles.scss';
 
-const ProjectSection = (props) => {
+const ProjectListItem = (props) => {
 	const {
 		imageAlt,
 		logoImg,
 		text,
 		isInverted,
 		repoAddress,
-		demoURL
+		demoURL,
+		type
 	} = props;
 
 	const getProjectSectionClasses = () => {
-		return isInverted ?
+		const baseName = isInverted ?
 			'c-project'
 			: 'c-project s-is-inverted'
+
+		return `${baseName} s-has-${type}-theme`
 	};
 
 	const buildLinks = () => {
@@ -41,7 +44,7 @@ const ProjectSection = (props) => {
 	}
 
 	return(
-		<section className={getProjectSectionClasses()}>
+		<div className={getProjectSectionClasses()}>
 			<div className="c-project_content">
 				<article>
 					{text}
@@ -54,13 +57,13 @@ const ProjectSection = (props) => {
 					<img className='c-project_img' src={logoImg[0].thumbnails.large.url} alt={imageAlt}/>
 				</a>
 			}
-		</section>
+		</div>
 	)
 }
 
-export default ProjectSection;
+export default ProjectListItem;
 
-ProjectSection.propTypes = {
+ProjectListItem.propTypes = {
 	imageAlt: PropTypes.string.isRequired,
 	text: PropTypes.string.isRequired,
 	isInverted: PropTypes.bool.isRequired,

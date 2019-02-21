@@ -3,7 +3,7 @@ import {Route, Switch} from 'react-router-dom';
 
 // local components
 import Homepage from 'pages/Homepage';
-import ProjectPage from 'pages/ProjectPage';
+import ProjectListGrid from 'containers/ProjectListGrid';
 import Navbar from 'containers/Navbar';
 import Footer from 'components/Footer';
 
@@ -20,7 +20,7 @@ class Routes extends React.Component {
 
 						<Route exact path='/' component={Homepage} />
 
-						<Route path='/projects/:projectType' component={ProjectPage} />
+						<Route path='/projects/:projectType' component={ProjectListGrid} />
 
 					</Switch>
 				</div>

@@ -3,9 +3,9 @@ import ProjectCard from 'components/ProjectCard';
 
 import './styles.scss';
 
-const ProjectListGrid = props => {
+const ProjectTypeGrid = props => {
 	return(
-		<div className="c-projectListGrid">
+		<div className="c-ProjectTypeGrid">
 			<ProjectCard theme='react' title="React">
 				Redux, Jest, Enzyme. Unit-tested, mother-approved.
 			</ProjectCard>
@@ -21,4 +21,4 @@ const ProjectListGrid = props => {
 	)
 }
 
-export default ProjectListGrid;
+export default ProjectTypeGrid;

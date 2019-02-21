@@ -1,4 +1,5 @@
 @import 'commonStyles/_colors.scss';
+@import 'commonStyles/_animations.scss';
 
 .c-skillCard {
 	box-shadow: -1px 2px 4px $silver;
@@ -6,10 +7,14 @@
 	font-size: 1.2rem;
 	padding: 1rem;
 	display: grid;
-	border: 5px solid transparent;
+	border: 2px solid transparent;
 	color: $dark;
 	display: grid;
 	grid: "skillCard_graphic" 1fr "skillCard_text" 1fr;
+
+	&:hover {
+		transform: scale(1.0075) translate(2px, 2px);
+	}
 
 	&.s-has-react-theme {
 		animation: reactBorder .3s linear forwards;
@@ -61,94 +66,5 @@
 
 // Animation definitions below
 
-@keyframes htmlBorder {
 
-	from {
-		border: 2px solid $silver;
-		transform: scale(1) translate(0,0);
-	}
-
-	25% {
-		border: 2px solid $silver;
-		border-top: 2px solid $highlight;
-	}
-
-	50% {
-		border: 2px solid $silver;
-		border-right: 2px solid $highlight;
-	}
-
-	75% {
-		border: 2px solid $silver;
-		border-bottom: 2px solid $highlight;
-	}
-
-	to {
-		border: 2px solid $silver;
-		border-left: 2px solid $highlight;
-		transform: scale(1.0075) translate(2px, 2px);
-	}
-}
-
-@keyframes reactBorder {
-	from {
-		border: 2px solid transparent;
-		transform: scale(1) translate(0,0);
-	}
-
-	25% {
-		border: 2px solid transparent;
-		border-top: 2px solid $react-blue;
-	}
-
-	50% {
-		border: 2px solid transparent;
-		border-top: 2px solid $silver;
-		border-right: 2px solid $react-blue;
-	}
-
-	75% {
-		border: 2px solid transparent;
-		border-top: 2px solid $silver;
-		border-right: 2px solid $silver;
-		border-bottom: 2px solid $react-blue;
-	}
-
-	to {
-		border: 2px solid $silver;
-		border-left: 2px solid $react-blue;
-		transform: scale(1.0075) translate(2px, 2px);
-	}
-}
-
-@keyframes jsBorder {
-	from {
-		border: 2px solid transparent;
-		transform: scale(1) translate(0,0);
-	}
-
-	25% {
-		border: 2px solid transparent;
-		border-top: 2px solid $js-red;
-	}
-
-	50% {
-		border: 2px solid transparent;
-		border-top: 2px solid $silver;
-		border-right: 2px solid $js-red;
-	}
-
-	75% {
-		border: 2px solid transparent;
-		border-top: 2px solid $silver;
-		border-right: 2px solid $silver;
-		border-bottom: 2px solid $js-red;
-	}
-
-	to {
-		border: 2px solid $silver;
-		border-left: 2px solid $js-red;
-		transform: scale(1.0075) translate(2px, 2px);
-	}
-}
 

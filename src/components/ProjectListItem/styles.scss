@@ -1,4 +1,5 @@
 @import 'commonStyles/_colors.scss';
+@import 'commonStyles/_animations.scss';
 
 .c-project {
 	width: 100%;
@@ -8,9 +9,28 @@
 		"img"
 		"content";
 
-	background-color: darken($white, 10%);
 	padding: 1rem;
-	margin-bottom: 1rem;
+	box-shadow: -1px 2px 4px $silver;
+	color: $dark;
+	border: 2px solid transparent;
+	margin: 1.5rem 0;
+
+	&:hover {
+		transform: scale(1.0075) translate(2px, 2px);
+		
+		&.s-has-react-theme {
+			animation: reactBorder .3s linear forwards;
+		}
+
+		&.s-has-css-theme {
+			animation: htmlBorder .3s linear forwards;
+		}
+
+		&.s-has-js-theme{
+			animation: jsBorder .3s linear forwards;
+		}
+	}
+	
 }
 
 

@@ -15,7 +15,9 @@ $hover-map: (
 
 .c-about {
 	height: 50vh;
+	min-height: 400px;
 	position: relative;
+	overflow: hidden;
 
 	&.s-is-hovered {
 
@@ -43,39 +45,29 @@ $hover-map: (
 }
 
 .c-about_splash {
+	width: 15%;
 	height: 15%;
 	opacity: .5;
 	position: absolute;
-	left: 0;
-	right: 0;
-	top: 45%;
-	margin: 0 auto;
+	left: 42.5%;
+	top: 42.5%;
 	transition: .5s ease transform;
 }
 
 @media screen and (min-width: 875px) {
-	.c-about {
-		height: 30vh;
-	}
-}
-
-@media screen and (min-width: 875px) {
-	.c-about {
-		height: 30vh;
-	}
 	.c-about_text {
 		width: 75%;
 		left: 12.5%;
 	}
+	.c-about {
 
-	.c-about_splash {
-		top: 35%;
-	}
-}
+		&.s-is-hovered {
 
-@media screen and (min-width: 1295px) {
-	.c-about_splash {
-		top: 32%;
+			.c-about_splash {
+				transform: scale(8);
+			}
+			
+		}
 	}
 }
 

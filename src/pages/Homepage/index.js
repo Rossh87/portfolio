@@ -4,7 +4,7 @@ import React from 'react';
 
 import ContactForm from 'containers/ContactForm';
 import Divider from 'legos/Divider';
-import ProjectListGrid from 'components/ProjectListGrid';
+import ProjectTypeGrid from 'components/ProjectTypeGrid';
 import HomeAboutSection from 'components/HomeAboutSection';
 
 const Homepage = props => {
@@ -12,7 +12,7 @@ const Homepage = props => {
 		<React.Fragment>
 			<HomeAboutSection />
 			<Divider id='skills'>Skills</Divider>
-			<ProjectListGrid />
+			<ProjectTypeGrid />
 			<Divider id='contact'>Contact</Divider>
 			<ContactForm />
 		</React.Fragment>

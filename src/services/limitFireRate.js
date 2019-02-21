@@ -11,9 +11,6 @@ function limitFireRate(cb, delay) {
 	// on component unmount.
 	return {
 		callback: function(e) {
-			if(e.preventDefault) {
-				e.preventDefault();
-			}
 			
 			if(canFire) {
 				canFire = false;
