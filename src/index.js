@@ -8,12 +8,15 @@ import 'commonStyles/_colors.scss';
 
 // Get local components
 import App from './containers/App';
+import ErrorBoundary from 'legos/ErrorBoundary';
 
 const root = document.querySelector('#root');
 
 ReactDOM.render(
 	<Router>
-		<App />
+		<ErrorBoundary>	
+			<App />
+		</ErrorBoundary>
 	</Router>,
 	root
 );

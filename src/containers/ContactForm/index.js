@@ -1,5 +1,5 @@
 import React from 'react';
-import FlashMessage from 'react-flash-message';
+import CustomFlash from 'legos/CustomFlash';
 
 // Get local components
 import BaseForm from 'legos/BaseForm';
@@ -28,30 +28,21 @@ class ContactForm extends React.Component {
 		}
 
 		catch(err) {
-			console.log('from catch');
-			this.setState({flashMessage: 'Oops!  Something glitched, please check your info and try again'});
-		}
-	}
-
-	renderFlash() {
-		if(this.state.flashMessage) {
-			return(
-				<FlashMessage duration={15000}>
-					<div className="c-contact_flash">{this.state.flashMessage}</div>
-				</FlashMessage>
-			)
+			this.setState({flashMessage: 'Oops!  Something glitched, please check your info and try again.'});
 		}
 	}
 
 	render() {
-		// Property 'fields' on baseform accepts an object describing the desired fields 
-		// in the returned form.  All fields must have a name (string) and type (string).  
+		// Property 'fields' on <baseform> accepts an array of objects.
+		// Each object describes the field that will be present in 
+		// the returned form.  Each field object must have a name (string) and type
+		// (string).
 		// Acceptable types are 
 		// currently 'text' and 'textarea';
 		return(
 			<section className="c-contact">
 				<div className="c-contact_form">
-					{this.renderFlash()}
+					<CustomFlash duration={10000} message={this.state.flashMessage}/>
 					<BaseForm
 						handleFormSubmission={this.handleSubmit}
 						fields={[

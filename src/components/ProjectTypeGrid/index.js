@@ -7,15 +7,15 @@ const ProjectTypeGrid = props => {
 	return(
 		<div className="c-ProjectTypeGrid">
 			<ProjectCard theme='react' title="React">
-				Redux, Jest, Enzyme. Unit-tested, mother-approved.
+				Redux, Jest, Enzyme.
 			</ProjectCard>
 
 			<ProjectCard theme='js' title="Javascript" isInverted={true}>
-				Redux, Jest, Enzyme. Unit-tested, mother-approved.
+				Node, Express, 
 			</ProjectCard>
 
 			<ProjectCard theme='css' title="HTML/CSS">
-				Responsive layouts with grid, flexbox, and BEM.
+				Responsive, adaptable layouts with grid, flexbox, and BEM.
 			</ProjectCard>
 		</div>
 	)

@@ -3,7 +3,7 @@ import {Route, Switch} from 'react-router-dom';
 
 // local components
 import Homepage from 'pages/Homepage';
-import ProjectListGrid from 'containers/ProjectListGrid';
+import ProjectListGrid from 'components/ProjectListGrid';
 import Navbar from 'containers/Navbar';
 import Footer from 'components/Footer';
 

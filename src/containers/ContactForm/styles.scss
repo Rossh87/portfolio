@@ -15,18 +15,7 @@
 	grid-area: text;
 }
 
-.c-contact_flash {
-	overflow: hidden;
-	text-align: center;
-	font-style: italic;
-	font-size: 1.2rem;
-	background-color: $highlight-trans;
-	border: 2px solid $highlight;
-	border-radius: 10px;
-	padding: 0.5rem;
-	margin: .5rem 0 0;
-	animation: slide-in .5s forwards;
-}
+
 
 @media screen and (min-width: 900px) {
 	.c-contact {
@@ -41,12 +30,3 @@
 	}
 }
 
-@keyframes slide-in {
-	from {
-		transform: translateY(-2rem);
-	}
-
-	to {
-		transform: translateY(0);
-	}
-}
