@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // Get local components
 import InputItem from 'legos/InputItem';
@@ -17,7 +18,7 @@ class BaseForm extends React.Component {
 		super(props);
 		// Build a state object with a prop for each field specified in the 
 		// array of objects on props.fields.  Add a unique id to each.
-		const fields = this.props.fields.reduce(
+		const fields = props.fields.reduce(
 			(fields, field) => {
 				fields[field.name] = {
 					name: field.name,
@@ -52,6 +53,11 @@ class BaseForm extends React.Component {
 	handleFormSubmit = (e) => {
 		e.preventDefault();
 
+		const {
+			handleFormSubmission,
+			validateFormData
+		} = this.props;
+
 		// trim unneeded form data
 		const dataToSubmit = {};
 
@@ -59,20 +65,31 @@ class BaseForm extends React.Component {
 			dataToSubmit[this.state[field].name] = this.state[field].value;
 		}
 
-		// pass data to handler on props
-		this.props.handleFormSubmission(dataToSubmit)
+		// Validate data with handler passed from parent.  If 
+		// data is valid, submit form to remote API and reset
+		// form.  Otherwise, break function execution without 
+		// reset.  Parent is responsible for updating UI to display
+		// Any errors.
+		const error = validateFormData(dataToSubmit);
 
-		// reset state
-		this.setState(prevState => {
-			const newState = {};
-			for(let k in prevState) {
-				newState[k] = {
-					...prevState[k],
-					value: ''
-				}
-			};
-			return newState
-		});
+		if(!error) {
+			handleFormSubmission(dataToSubmit)
+
+			this.setState(prevState => {
+				const newState = {};
+				for(let k in prevState) {
+					newState[k] = {
+						...prevState[k],
+						value: ''
+					}
+				};
+				return newState
+			});
+		}
+
+		else {
+			return;
+		}
 	}
 
 	handleInputFocus = (e) => {
@@ -141,5 +158,9 @@ class BaseForm extends React.Component {
 
 export default BaseForm;
 
-
+BaseForm.propTypes = {
+	fields: PropTypes.array.isRequired,
+	handleFormSubmission: PropTypes.func.isRequired,
+	validateFormData: PropTypes.func.isRequired
+};
 

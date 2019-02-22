@@ -4,8 +4,9 @@ import CustomFlash from 'legos/CustomFlash';
 // Get local components
 import BaseForm from 'legos/BaseForm';
 
-// Get Ajax handler
+// Get Ajax handler and form validator
 import ajaxHandler from 'services/ajaxHandler';
+import formValidation from 'services/formValidation';
 
 import './styles.scss';
 
@@ -32,6 +33,18 @@ class ContactForm extends React.Component {
 		}
 	}
 
+	validateFormData = (formData) => {
+		const formError = formValidation(formData);
+
+		// Prevent any network request if there is a problem with 
+		// form data
+		if(formError) {
+			this.setState({flashMessage: formError});
+		}
+
+		return formError;
+	}
+
 	render() {
 		// Property 'fields' on <baseform> accepts an array of objects.
 		// Each object describes the field that will be present in 
@@ -44,6 +57,7 @@ class ContactForm extends React.Component {
 				<div className="c-contact_form">
 					<CustomFlash duration={10000} message={this.state.flashMessage}/>
 					<BaseForm
+						validateFormData={this.validateFormData}
 						handleFormSubmission={this.handleSubmit}
 						fields={[
 							{name:'name', type: 'input'}, 

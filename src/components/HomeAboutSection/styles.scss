@@ -54,6 +54,8 @@ $hover-map: (
 	transition: .5s ease transform;
 }
 
+// Make text container narrower and increase size of
+// color splash when hovered.
 @media screen and (min-width: 875px) {
 	.c-about_text {
 		width: 75%;
@@ -68,6 +70,14 @@ $hover-map: (
 			}
 			
 		}
+	}
+}
+
+// Reduce height of container @ larger screen sizes
+// to minimize whitespace under text.
+@media screen and (min-width: 700px) {
+	.c-about {
+		height: 30vh;
 	}
 }
 
