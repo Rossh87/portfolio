@@ -2,7 +2,7 @@ import React from 'react';
 import {withRouter} from 'react-router';
 
 // Local components
-import LinkItem from 'legos/LinkItem';
+import NavLinkItem from 'legos/NavLinkItem';
 import Hamburger from 'legos/Hamburger';
 
 import './styles.scss';
@@ -38,41 +38,41 @@ class Navbar extends React.Component {
 				<nav className={this.getNavClasses()}>
 					<ul className="c-nav_menu">
 
-						<LinkItem
+						<NavLinkItem
 								styleClass="c-nav_item"
 								isLinkComponent={true}
 								clickHandler={this.handleClick}
 								path={'/'}
 						>
 							Home
-						</LinkItem>
+						</NavLinkItem>
 
-						<LinkItem
+						<NavLinkItem
 							styleClass="c-nav_item"
 							isLinkComponent={false}
 							clickHandler={this.handleClick}
 							path={'#about'}
 						>
 							About
-						</LinkItem>
+						</NavLinkItem>
 
-						<LinkItem
+						<NavLinkItem
 							styleClass="c-nav_item"
 							isLinkComponent={false}
 							clickHandler={this.handleClick}
 							path={'#skills'}
 						>
 							Projects
-						</LinkItem>
+						</NavLinkItem>
 
-						<LinkItem
+						<NavLinkItem
 							styleClass="c-nav_item"
 							isLinkComponent={false}
 							clickHandler={this.handleClick}
 							path={'#contact'}
 						>
 							Contact
-						</LinkItem>
+						</NavLinkItem>
 						
 					</ul>
 				</nav>

@@ -1,3 +1,5 @@
+// Note: this content is currently unused;
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles.scss';

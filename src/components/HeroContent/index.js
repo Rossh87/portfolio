@@ -1,3 +1,5 @@
+// Note--This content is currently unused;
+
 import React from 'react';
 
 // Convenient util for generating unique keys

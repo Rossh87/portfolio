@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 
 import './styles.scss';
 
-const LinkItem = ({clickHandler, styleClass, isLinkComponent, path, children}) => {
+const NavLinkItem = ({clickHandler, styleClass, isLinkComponent, path, children}) => {
 
 	const determineLinkType = () => {
 		return isLinkComponent?
@@ -25,4 +25,4 @@ const LinkItem = ({clickHandler, styleClass, isLinkComponent, path, children}) =
 	)
 }
 
-export default React.memo(LinkItem);
+export default React.memo(NavLinkItem);
