@@ -8,17 +8,18 @@ const JSSvg = ({graphicTheme, isHovered}) => {
 
 	const buildSvgClassName = () => {
 		return isHovered ?
-			'c-jsGraphic s-is-hovered'
-			: 'c-jsGraphic'
+			'c-jsGraphic_anchor s-is-hovered'
+			: 'c-jsGraphic_anchor'
 	}
 
 	return(
-
+		<div className={buildSvgClassName()}>
 			<FaJs 
 				fill={graphicTheme.baseColor} 
 				strokeWidth={graphicTheme.strokeWidth} 
-				className={buildSvgClassName()}
+				className='c-jsGraphic_graphic'
 			/>
+		</div>
 	)
 }
 
