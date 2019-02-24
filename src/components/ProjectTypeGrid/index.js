@@ -11,7 +11,7 @@ const ProjectTypeGrid = props => {
 			</ProjectCard>
 
 			<ProjectCard theme='js' title="Javascript" isInverted={true}>
-				Node, Express, 
+				Node, Express, and Mongo, with plenty of vanilla for good measure.
 			</ProjectCard>
 
 			<ProjectCard theme='css' title="HTML/CSS">
