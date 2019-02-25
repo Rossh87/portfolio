@@ -3,6 +3,7 @@ import CustomFlash from 'legos/CustomFlash';
 
 // Get local components
 import BaseForm from 'legos/BaseForm';
+import Divider from 'legos/Divider';
 
 // Get Ajax handler and form validator
 import ajaxHandler from 'services/ajaxHandler';
@@ -58,30 +59,32 @@ class ContactForm extends React.Component {
 		// Acceptable types are 
 		// currently 'text' and 'textarea';
 		return(
-			<section className="c-contact">
-				<div className="c-contact_form">
-					<CustomFlash duration={10000} message={this.state.flashMessage}/>
-					<BaseForm
-						validateFormData={this.validateFormData}
-						handleFormSubmission={this.handleSubmit}
-						fields={[
-							{name:'name', type: 'input'}, 
-							{name:'email', type: 'input'},
-							{name:'message', type: 'textarea'}
-						]}
-					/>
-				</div>
+			<React.Fragment>
+			<Divider id='contact'>Collaborate</Divider>
+				<section className="c-contact">
+					<div className="c-contact_form">
+						<CustomFlash duration={10000} message={this.state.flashMessage}/>
+						<BaseForm
+							validateFormData={this.validateFormData}
+							handleFormSubmission={this.handleSubmit}
+							fields={[
+								{name:'name', type: 'input'}, 
+								{name:'email', type: 'input'},
+								{name:'message', type: 'textarea'}
+							]}
+						/>
+					</div>
 
-				<div className="c-contact_text">
-					<p>
-						Hiring?  I'm interested!  Hacking?  I'd love to help!  Learning?  Me too (forever)!
-						Inspiration is nine-tenths collaboration.  If you have a project, a problem, or even just a 
-						story on your mind, it would be my pleasure to listen.  Drop me a line in the form next door,
-						or find me on any of the social media below.
-					</p>
-				</div>
-			</section>
-			
+					<div className="c-contact_text">
+						<p>
+							Hiring?  I'm interested!  Hacking?  I'd love to help!  Learning?  Me too (forever)!
+							Inspiration is nine-tenths collaboration.  If you have a project, a problem, or even just a 
+							story on your mind, it would be my pleasure to listen.  Drop me a line in the form next door,
+							or find me on any of the social media below.
+						</p>
+					</div>
+				</section>
+			</React.Fragment>
 		);
 	}
 }

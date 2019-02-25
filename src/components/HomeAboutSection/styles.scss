@@ -13,7 +13,7 @@
 	position: absolute;
 	top: 20%;
 	text-align: center;
-	font-size: 1.4rem;
+	font-size: 1.3rem;
 }
 
 
@@ -30,6 +30,9 @@
 // Reduce height of container @ larger screen sizes
 // to minimize whitespace under text.
 @media screen and (min-width: 700px) {
+	.c-about_text {
+		font-size: 1.4rem;
+	}
 	.c-about {
 		height: 30vh;
 	}

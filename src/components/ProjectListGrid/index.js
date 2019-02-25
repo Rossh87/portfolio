@@ -5,6 +5,7 @@ import ajaxHandler from 'services/ajaxHandler';
 // Get local components
 import ProjectListItem from 'components/ProjectListItem';
 import ProjectLoader from 'containers/ProjectLoader';
+import Divider from 'legos/Divider';
 
 
 import './styles.scss';
@@ -21,10 +22,13 @@ const ProjectsBuilder = ({data}) => {
 
 const ProjectListGrid = props => {
 	return(
-		<ProjectLoader>
-			<ProjectsBuilder />
-		</ProjectLoader>
-	)
+		<React.Fragment>
+			<Divider id='skills'>Projects</Divider>
+			<ProjectLoader>
+				<ProjectsBuilder />
+			</ProjectLoader>
+		</React.Fragment>
+	);
 }
 
 export default ProjectListGrid;

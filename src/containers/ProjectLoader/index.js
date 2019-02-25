@@ -56,7 +56,6 @@ class ProjectLoader extends React.Component {
 	renderChildrenWithData() {
 		const {children} = this.props;
 		const {data} = this.state;
-		debugger;
 		const child = React.Children.only(children);
 
 		const val = React.cloneElement(child, {
@@ -64,9 +63,7 @@ class ProjectLoader extends React.Component {
 			data,
 			...this.props
 		});
-
-		debugger;
-
+		
 		return val;
 	}
 

@@ -20,7 +20,6 @@ const HomeAboutSection = ({isHovered, HOCRef, handleMouseEnter, handleMouseLeave
 		// ID added for navigation.  Ref is passed by HOC to manage hover
 		// behaviors when mouse not in use.
 		<section 
-			id="about"
 			className={buildClassNames()}
 			ref={HOCRef}
 			onMouseEnter={handleMouseEnter}
