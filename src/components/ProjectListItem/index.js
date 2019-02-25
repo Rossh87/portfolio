@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {FaGithub} from 'react-icons/fa';
 
 import './styles.scss';
 
@@ -31,14 +32,14 @@ const ProjectListItem = (props) => {
 				</a>
 				<a href={repoAddress} className="c-project_links--github">
 					<span>View source code</span>
-					<i className="fab fa-github"></i>
+					<FaGithub />
 				</a>
 			</div>
 			:
 			<div className="c-project_links">
 				<a href={repoAddress} className="c-project_links--github">
 					<span>View source code</span>
-					<i className="fab fa-github"></i>
+					<FaGithub />
 				</a>
 			</div>
 	}
