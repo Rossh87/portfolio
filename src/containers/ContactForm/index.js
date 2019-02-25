@@ -23,8 +23,10 @@ class ContactForm extends React.Component {
 	
 
 	async handleSubmit(formState) {
+		const REACT_APP_API_ENDPOINT=process.env.REACT_APP_API_ENDPOINT;
+
 		try {
-			await ajaxHandler('post', 'contact', formState);
+			await ajaxHandler('post', `${REACT_APP_API_ENDPOINT}/contact`, formState);
 			this.setState({flashMessage: 'MessageSent!'})
 		}
 
