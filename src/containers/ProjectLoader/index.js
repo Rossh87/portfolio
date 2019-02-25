@@ -36,9 +36,9 @@ class ProjectLoader extends React.Component {
 		try {
 			const projectsArray = await ajaxHandler(
 				'get',
-				`${REACT_APP_API_ENDPOINT}projects/${projectType}`
+				`${REACT_APP_API_ENDPOINT}/projects/${projectType}`
 			);
-			
+
 			this.setState({
 				data: [...projectsArray],
 				isPending: false
