@@ -62,24 +62,24 @@
 
 	25% {
 		border: 2px solid transparent;
-		border-top: 2px solid $js-red;
+		border-top: 2px solid darken($clay-red, 10%);
 	}
 
 	50% {
 		border: 2px solid transparent;
 		border-top: 2px solid $silver;
-		border-right: 2px solid $js-red;
+		border-right: 2px solid darken($clay-red, 10%);
 	}
 
 	75% {
 		border: 2px solid transparent;
 		border-top: 2px solid $silver;
 		border-right: 2px solid $silver;
-		border-bottom: 2px solid $js-red;
+		border-bottom: 2px solid darken($clay-red, 10%);
 	}
 
 	to {
 		border: 2px solid $silver;
-		border-left: 2px solid $js-red;
+		border-left: 2px solid darken($clay-red, 10%);
 	}
 }

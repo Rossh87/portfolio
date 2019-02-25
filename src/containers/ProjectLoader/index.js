@@ -5,12 +5,11 @@ import React from 'react';
 import {withRouter} from 'react-router-dom';
 
 // Get util to make keys for elements in iterable
-import shortid from 'shortid'
+import shortid from 'shortid';
 
 // Get local components
 import PrettyError from 'legos/PrettyError';
 import LoadingGraphic from 'graphicComponents/LoadingGraphic';
-import ProjectListGrid from 'components/ProjectListGrid';
 
 
 // Get services

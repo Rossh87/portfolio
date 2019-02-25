@@ -28,7 +28,7 @@
 
 	&.s-has-js-theme{
 		animation: jsBorder .3s linear forwards;
-		color: $js-red;
+		color: darken($clay-red, 8%);
 	}
 }
 

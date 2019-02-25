@@ -36,7 +36,19 @@
 
 .c-project_content {
 	grid-area: content;
-	padding: 0 1rem;
+	padding: 1rem 1rem 0;
+}
+
+.c-project_text {
+	a {
+		color: blue;
+	}
+
+	code {
+		display: inline-block;
+		padding: 0 .4rem;
+		box-shadow: 0 0 1px lighten($dark, 50%);
+	}
 }
 
 .c-project_img {

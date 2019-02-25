@@ -1,7 +1,5 @@
 import React from 'react';
 
-import ajaxHandler from 'services/ajaxHandler';
-
 // Get local components
 import ProjectListItem from 'components/ProjectListItem';
 import ProjectLoader from 'containers/ProjectLoader';

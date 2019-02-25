@@ -36,7 +36,7 @@ class ProjectCard extends React.Component {
 
 			js: {
 				themeName: 'js',
-				hoverColor: 'red',
+				hoverColor: 'rgb(232, 99, 78)',
 				strokeWidth: 4,
 				baseColor: '#848C8E'
 			}

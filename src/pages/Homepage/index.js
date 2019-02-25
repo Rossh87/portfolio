@@ -5,10 +5,11 @@ import {Switch, Route} from 'react-router-dom';
 import ProjectListGrid from 'components/ProjectListGrid';
 import ProjectTypeGrid from 'components/ProjectTypeGrid';
 import Footer from 'components/Footer';
-import ContactForm from 'containers/ContactForm';
-import Divider from 'legos/Divider';
 import HomeAboutSection from 'components/HomeAboutSection';
+import ContactForm from 'containers/ContactForm';
 import Navbar from 'containers/Navbar';
+
+import './styles.scss';
 
 const Homepage = props => {
 	return(

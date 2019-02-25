@@ -44,12 +44,16 @@ const ProjectListItem = (props) => {
 			</div>
 	}
 
+	const createHTMLText = (text) => {
+		return {
+			__html: text
+		}
+	}
+
 	return(
 		<div className={getProjectSectionClasses()}>
 			<div className="c-project_content">
-				<article>
-					{text}
-				</article>
+				<article className="c-project_text" dangerouslySetInnerHTML={createHTMLText(text)} />
 				{buildLinks()}
 			</div>
 			{
