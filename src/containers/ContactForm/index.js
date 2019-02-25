@@ -23,6 +23,9 @@ class ContactForm extends React.Component {
 	
 
 	async handleSubmit(formState) {
+		// This handler will NOT be called by <BaseForm> if this.validateFormData
+		// returns an error rather than null;
+		
 		try {
 			// OMIT leading slash in path passed to ajaxHandler.  It is
 			// configured to hit correct endpoint.

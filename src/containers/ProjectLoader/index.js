@@ -35,7 +35,7 @@ class ProjectLoader extends React.Component {
 		try {
 			const projectsArray = await ajaxHandler(
 				'get',
-				'projects/${projectType}'
+				`projects/${projectType}`
 			);
 
 			this.setState({

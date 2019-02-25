@@ -5,11 +5,14 @@ function validateEmailFormat(string) {
 }
 
 function validateFieldsFilled(obj) {
+	debugger;
 	for(let key in obj) {
 		if(!obj[key]) {
 			return false;
 		}
 	}
+
+	return true;
 }
 
 export default function validateFormObj(formData) {
