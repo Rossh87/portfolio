@@ -27,16 +27,15 @@ class ProjectLoader extends React.Component {
 	async componentDidMount() {
 		// Get info from React Router to build correct URL.
 		const projectType = this.props.match.params.projectType;
-		const REACT_APP_API_ENDPOINT=process.env.REACT_APP_API_ENDPOINT;
 
 		this.setState({isPending: true});
 
-		// Ajax handler hardcoded to hit API route, only need final path
-		// extension for now
+		// OMIT leading slash in path passed to ajaxHandler.  It is
+		// configured to hit correct endpoint.
 		try {
 			const projectsArray = await ajaxHandler(
 				'get',
-				`${REACT_APP_API_ENDPOINT}/projects/${projectType}`
+				'projects/${projectType}'
 			);
 
 			this.setState({
