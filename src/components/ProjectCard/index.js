@@ -14,6 +14,8 @@ import Button from 'legos/Button';
 
 import './styles.scss';
 
+const REACT_APP_API_ENDPOINT=process.env.REACT_APP_API_ENDPOINT;
+
 class ProjectCard extends React.Component {
 	state = {
 		// themes are locally defined for now.
@@ -90,7 +92,7 @@ class ProjectCard extends React.Component {
 					<div className="c-skillCard_text">
 						<h1 className="c-skillCard_title">{title}</h1>
 						<p className="c-skillCard_content">{children}</p>
-						<Link to={`/projects/${theme}`}>
+						<Link to={`${REACT_APP_API_ENDPOINT}/projects/${theme}`}>
 							<Button 
 								receivedClassName='c-skillCard_button'
 							>
