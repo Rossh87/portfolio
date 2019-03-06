@@ -1,5 +1,5 @@
 import React from 'react';
-import {FaJs} from 'react-icons/fa';
+import {ReactComponent as JsSVG} from 'images/VectrJS.svg';
 import PropTypes from 'prop-types';
 
 import './styles.scss';
@@ -8,19 +8,17 @@ const JSSvg = ({graphicTheme, isHovered}) => {
 
 	const buildSvgClassName = () => {
 		return isHovered ?
-			'c-jsGraphic_anchor s-is-hovered'
-			: 'c-jsGraphic_anchor'
+			'c-jsGraphic s-is-hovered'
+			: 'c-jsGraphic'
 	}
 
 	return(
 		<div className={buildSvgClassName()}>
-			<FaJs 
-				fill={graphicTheme.baseColor} 
-				strokeWidth={graphicTheme.strokeWidth} 
-				className='c-jsGraphic_graphic'
-			/>
+			<JsSVG className='c-jsGraphic_bracket--left'/>
+			<JsSVG className='c-jsGraphic_bracket--right'/>
 		</div>
 	)
+
 }
 
 export default JSSvg;
@@ -35,3 +33,9 @@ JSSvg.propTypes = {
 
 	isHovered: PropTypes.bool.isRequired
 };
+
+// <JsSVG 
+// 				fill={graphicTheme.baseColor} 
+// 				strokeWidth={graphicTheme.strokeWidth} 
+// 				className='c-jsGraphic_graphic'
+// 			/>

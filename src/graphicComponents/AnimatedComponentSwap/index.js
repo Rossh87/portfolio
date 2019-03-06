@@ -1,3 +1,5 @@
+// Note: this component is not currently in use.
+
 import React from 'react';
 
 // Function to limit fire rate of scroll listener callbacks

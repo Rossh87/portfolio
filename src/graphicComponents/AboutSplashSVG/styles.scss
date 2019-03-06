@@ -16,39 +16,49 @@ $hover-map: (
 .c-about_splash {
 	width: 15%;
 	height: 15%;
-	opacity: .5;
+	opacity: 1;
 	position: absolute;
 	left: 42.5%;
 	top: 42.5%;
 	transition: .5s ease transform;
+	transform: scale(8);
 }
 
-.s-is-hovered .c-about_splash {
-	transform: scale(5);
-	opacity: 1;
-
-	// Add color rings to splash on hover
-	@each $key, $opacity in $hover-map {
-		.c-about_splash--stop#{$key} {
-			stop-color: $accent;
-			stop-opacity: $opacity;
-		}
-	}
-}
-
-@each $key, $color in $map {
+@each $key, $opacity in $hover-map {
 	.c-about_splash--stop#{$key} {
-		stop-color: $color;
+		stop-color: $accent;
+		stop-opacity: $opacity;
 	}
 }
 
-// Queries start here
 
-// On large enough screen, increase size of color splash when hovered.
-@media screen and (min-width: 875px) {
+// .s-is-hovered .c-about_splash {
+// 	transform: scale(5);
+// 	opacity: 1;
 
-	.s-is-hovered .c-about_splash {
-		transform: scale(8);
-	}
+// 	// Add color rings to splash on hover
+// 	@each $key, $opacity in $hover-map {
+// 		.c-about_splash--stop#{$key} {
+// 			stop-color: $accent;
+// 			stop-opacity: $opacity;
+// 		}
+// 	}
+// }
 
-}
+// @each $key, $color in $map {
+// 	.c-about_splash--stop#{$key} {
+// 		stop-color: $color;
+// 	}
+// }
+
+// // Queries start here
+
+// // On large enough screen, increase size of color splash when hovered.
+// @media screen and (min-width: 875px) {
+
+// 	.s-is-hovered .c-about_splash {
+// 		transform: scale(8);
+// 	}
+
+// }
+

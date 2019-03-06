@@ -1,33 +1,66 @@
 @import 'commonStyles/_colors.scss';
 
-.c-jsGraphic_graphic {
+.c-jsGraphic {
+	display: flex;
+	justify-content: center;
 	width: 100%;
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	transition: all .25s;
+	stroke: $silver;
+	fill: none;
+	stroke-width: 12;
+	stroke-linecap: round;
+
+
+	&.s-is-hovered {
+		stroke: darken($clay-red-trans, 10%);
+	}
 }
 
-.c-jsGraphic_anchor {
+.c-jsGraphic_bracket--left, .c-jsGraphic_bracket--right {
 	width: 100%;
-	height: 100%;
-	position: relative;
-	overflow: hidden;
+	flex: 0 1 40%;
 }
 
-.c-jsGraphic_anchor::after {
-	z-index: -1;
-	content: '';
-	width: 0;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	position: absolute;
-	background-image: linear-gradient(0.25turn, #e0cfcb 0%, #fb7b5c 34%, #b00000 75%);
-	transition: .25s ease width;
+.c-jsGraphic_bracket--right {
+	animation: spinBack .25s ease forwards;
+	transform: rotate(180deg);
 }
 
-.c-jsGraphic_anchor.s-is-hovered.c-jsGraphic_anchor::after {
-	width: 100%;
+// Media queries below
+@media screen and (min-width: 545px) {
+	.c-jsGraphic {
+
+		&.s-is-hovered {
+			
+			.c-jsGraphic_bracket--right {
+
+				animation: spinOut .25s ease forwards;
+			}
+
+		}
+		
+	}
 }
 
+// Animations below
+@keyframes spinOut {
+	from {
+		transform: translateX(0) rotate(0);
+	}
+
+	to {
+		transform: translateX(250%) rotate(180deg);
+	}
+}
+
+@keyframes spinBack {
+	from {
+		transform: translateX(250%) rotate(360deg);
+	}
+
+	to {
+		transform: translateX(0) rotate(180deg);
+	}
+}

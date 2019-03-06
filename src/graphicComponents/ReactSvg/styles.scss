@@ -2,14 +2,24 @@
 
 .c-reactGraphic {
 	width: 100%;
-	height: 120%;
+	height: 100%;
 	transition: .2s all;
 	stroke: $white;
 	fill: $silver;
-	transform: translateY(-1.4rem);
 
 	&.s-is-hovered {
-		fill: $react-blue;
-		stroke: $silver;
+			fill: $react-blue;
+			stroke: $silver;
+			animation: spin 20s linear infinite;
+	}
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0);
+	}
+
+	to {
+		transform: rotate(360deg);
 	}
 }

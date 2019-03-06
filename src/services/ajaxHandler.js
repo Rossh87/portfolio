@@ -5,10 +5,18 @@ const endpoint = process.env.NODE_ENV === 'production' ?
 	:
 	'http://localhost:8001/api';
 
-async function ajaxHandler(method, path, data) {
-		const response = await axios[method](`${endpoint}/${path}`, data);
+function cleanupPath(path) {
+	const expToMatch = /(?<!^https:\/\/)\/{2,}/gi;
 
-		return response.data;
+	return path.replace(expToMatch, '/');
+}
+
+async function ajaxHandler(method, path, data) {
+	path = cleanupPath(`${endpoint}/${path}`);
+
+	const response = await axios[method](`${endpoint}/${path}`, data);
+
+	return response.data;
 };
 
 export default ajaxHandler;

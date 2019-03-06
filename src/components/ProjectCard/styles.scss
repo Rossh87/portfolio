@@ -11,6 +11,7 @@
 	color: $dark;
 	display: grid;
 	grid: "skillCard_graphic" 1fr "skillCard_text" 1fr;
+	overflow: hidden;
 
 	&:hover {
 		transform: scale(1.0075) translate(2px, 2px);
@@ -37,6 +38,7 @@
 }
 
 .c-skillCard_text {
+	transition: transform 0.25s linear;
 	grid-area: skillCard_text;
 	text-align: center;
 	align-self: center;
@@ -62,9 +64,15 @@
 	}
 }
 
-
-
-// Animation definitions below
+@media screen and (min-width: 545px) {
+	.c-skillCard {
+		&.s-has-js-theme {
+			.c-skillCard_text {
+				transform: translateX(-50%);
+			}
+		}
+	}
+}
 
 
 
