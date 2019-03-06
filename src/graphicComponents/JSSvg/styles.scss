@@ -14,7 +14,7 @@
 
 
 	&.s-is-hovered {
-		stroke: darken($clay-red-trans, 10%);
+		stroke: darken($clay-red, 10%);
 	}
 }
 
@@ -33,6 +33,7 @@
 	.c-jsGraphic {
 
 		&.s-is-hovered {
+			stroke: darken($clay-red-trans, 10%);
 			
 			.c-jsGraphic_bracket--right {
 

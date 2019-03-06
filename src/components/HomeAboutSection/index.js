@@ -31,7 +31,6 @@ const HomeAboutSection = ({isHovered, HOCRef, handleMouseEnter, handleMouseLeave
 				</p>
 			</div>
 			
-			<AboutSplashSVG />
 		</section>
 	)
 }
