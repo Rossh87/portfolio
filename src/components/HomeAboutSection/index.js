@@ -1,8 +1,5 @@
 import React from 'react';
 
-// Get local components
-import AboutSplashSVG from 'graphicComponents/AboutSplashSVG';
-
 // Get HOC to handle hover behavior on touch screens
 import withHoverBehaviors from 'hocs/withHoverBehaviors';
 
