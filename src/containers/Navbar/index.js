@@ -60,9 +60,9 @@ class Navbar extends React.Component {
 							styleClass="c-nav_item"
 							isLinkComponent={false}
 							clickHandler={this.handleClick}
-							path={'#skills'}
+							path={'https://github.com/Rossh87/portfolio'}
 						>
-							Projects
+							Source
 						</NavLinkItem>
 
 						<NavLinkItem
