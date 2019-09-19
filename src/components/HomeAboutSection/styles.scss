@@ -1,43 +1,14 @@
-@import 'commonStyles/_colors.scss';
+@import "commonStyles/_colors.scss";
 
 .c-about {
-	height: 50vh;
-	min-height: 400px;
-	position: relative;
-	overflow: hidden;
+    text-align: center;
+    padding: 4rem 0;
 }
-
-.c-about_text {
-	width: 100%;
-	z-index: 5;
-	position: absolute;
-	top: 20%;
-	text-align: center;
-	font-size: 1.3rem;
-}
-
-
-
-// Make text container narrower and increase size of
-// color splash when hovered.
-// @media screen and (min-width: 875px) {
-// 	.c-about_text {
-// 		width: 75%;
-// 		left: 12.5%;
-// 	}
-// }
 
 // Reduce height of container @ larger screen sizes
 // to minimize whitespace under text.
 @media screen and (min-width: 700px) {
-	.c-about_text {
-		font-size: 1.4rem;
-	}
-	.c-about {
-		height: 30vh;
-	}
+    .c-about_text {
+        font-size: 1.4rem;
+    }
 }
-
-
-
-

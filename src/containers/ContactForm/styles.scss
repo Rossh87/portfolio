@@ -1,32 +1,28 @@
-@import 'commonStyles/_colors.scss';
+@import "commonStyles/_colors.scss";
 
 .c-contact {
-	display: grid;
-	grid-template-areas: 
-		"text"
-		"form";
+    display: grid;
+    grid-template-areas:
+        "text"
+        "form";
 }
 
 .c-contact_form {
-	grid-area: form;
+    grid-area: form;
 }
 
 .c-contact_text {
-	grid-area: text;
+    grid-area: text;
 }
-
-
 
 @media screen and (min-width: 900px) {
-	.c-contact {
-		grid-template-areas: 
-			"form text";
+    .c-contact {
+        grid-template-areas: "form text";
 
-		grid-template-columns: 3fr 2fr;
-	}
+        grid-template-columns: 3fr 2fr;
+    }
 
-	.c-contact_text {
-		padding: 1.5rem;
-	}
+    .c-contact_text {
+        padding: 2.5rem 1.5rem;
+    }
 }
-

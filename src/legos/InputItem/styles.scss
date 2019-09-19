@@ -1,44 +1,45 @@
-@import 'commonStyles/_colors.scss';
+@import "commonStyles/_colors.scss";
 
 .c-text-input {
-	width: 100%;
-	color: white;
-	
+    width: 100%;
+    color: white;
+    padding-top: 0.5rem;
 }
 
 .c-text-input_label {
-	display: block;
-	text-transform: uppercase;
-	transform: translateY(1.75rem);
-	color: $white;
-	padding-left: 0.5rem;
-	transition: 0.25s transform;
+    display: block;
+    text-transform: uppercase;
+    transform: translateY(1.75rem);
+    color: $white;
+    padding-left: 0.5rem;
+    transition: 0.25s transform;
 
-	&:hover {
-		cursor: text;
-	}
+    &:hover {
+        cursor: text;
+    }
 
-	&.s-has-focus {
-		transform: none;
-		color: $dark;
-	}
+    &.s-has-focus {
+        transform: none;
+        color: $dark;
+    }
 }
 
-.c-text-input_input, .c-text-input_area {
-	color: inherit;
-	padding: 1rem;
-	display: block;
-	width: 100%;
-	font-size: 1rem;
-	font-family: inherit;
-	border: none;
-	height: 2rem;
-	background-color: lighten($dark, 25%);
-	outline-color: $highlight;
+.c-text-input_input,
+.c-text-input_area {
+    color: inherit;
+    padding: 1rem;
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    font-family: inherit;
+    border: none;
+    height: 2rem;
+    background-color: lighten($dark, 25%);
+    outline-color: $highlight;
 }
 
 .c-text-input_area {
-	height: 18vh;
+    height: 18vh;
 }
 
 // @media screen and (min-width: 590px) {
@@ -46,4 +47,3 @@
 // 		width: 70%;
 // 	}
 // }
-
