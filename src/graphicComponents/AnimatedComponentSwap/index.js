@@ -1,107 +1,103 @@
 // Note: this component is not currently in use.
 
-import React from 'react';
+import React from "react";
 
 // Function to limit fire rate of scroll listener callbacks
-import limitFireRate from 'services/limitFireRate';
+import limitFireRate from "utils/limitFireRate";
 
-import './styles.scss';
+import "./styles.scss";
 
 class AnimatedComponentSwap extends React.Component {
-	constructor(props) {
-		super(props);
-		
-		this._limitedScrollListener = limitFireRate(this.scrollListener, 500);
+    constructor(props) {
+        super(props);
 
-		this.scrollCount = 0;
+        this._limitedScrollListener = limitFireRate(this.scrollListener, 500);
 
-		this.itemCount = this.props.children.length;
+        this.scrollCount = 0;
 
-		this.state = {
-			isShownIndex: 0
-		}
-	}
+        this.itemCount = this.props.children.length;
 
-	shouldComponentUpdate(nextProps, nextState) {
-		const {isShownIndex} = this.state;
+        this.state = {
+            isShownIndex: 0
+        };
+    }
 
-		// Because we'll be calling setState on scroll (potentially many times),
-		// We restrict re-rendering to changes that affect UI.
-		return isShownIndex !== nextState.isShownIndex || this.props !== nextProps;
-	}
+    shouldComponentUpdate(nextProps, nextState) {
+        const { isShownIndex } = this.state;
 
-	componentDidMount() {
-		window.addEventListener('scroll', this._limitedScrollListener.callback)
-	}
+        // Because we'll be calling setState on scroll (potentially many times),
+        // We restrict re-rendering to changes that affect UI.
+        return (
+            isShownIndex !== nextState.isShownIndex || this.props !== nextProps
+        );
+    }
 
-	componentWillUnmount() {
-		window.removeEventListener('scroll', this._limitedScrollListener.callback);
-		clearTimeout(this._limitedScrollListener.timer);
-	}
+    componentDidMount() {
+        window.addEventListener("scroll", this._limitedScrollListener.callback);
+    }
 
-	scrollListener = (e) => {
-		console.log('trigger')
-		window.scrollTo(0, 0);
-		this.scrollCount++;
-		this.manageIndexOnScroll();
-	}
+    componentWillUnmount() {
+        window.removeEventListener(
+            "scroll",
+            this._limitedScrollListener.callback
+        );
+        clearTimeout(this._limitedScrollListener.timer);
+    }
 
-	manageIndexOnScroll() {
-		const {scrollCount, itemCount} = this;
+    scrollListener = (e) => {
+        console.log("trigger");
+        window.scrollTo(0, 0);
+        this.scrollCount++;
+        this.manageIndexOnScroll();
+    };
 
-		if(scrollCount <= itemCount - 1){
-			this.incrementIndex();
-		}
+    manageIndexOnScroll() {
+        const { scrollCount, itemCount } = this;
 
-		if(scrollCount > itemCount){
-			window.removeEventListener('scroll', this._manageScrollListener);
-			this.props.dismissHero();
-			window.scrollTo(0, 50);
-		}
-	}
+        if (scrollCount <= itemCount - 1) {
+            this.incrementIndex();
+        }
 
+        if (scrollCount > itemCount) {
+            window.removeEventListener("scroll", this._manageScrollListener);
+            this.props.dismissHero();
+            window.scrollTo(0, 50);
+        }
+    }
 
-	incrementIndex = () => {
-		const len = this.props.children.length;
-		const newIndex = (this.state.isShownIndex + 1) % (len)
-		const newState = newIndex < 0 ?
-			len - 1 : newIndex
+    incrementIndex = () => {
+        const len = this.props.children.length;
+        const newIndex = (this.state.isShownIndex + 1) % len;
+        const newState = newIndex < 0 ? len - 1 : newIndex;
 
-		this.setState({isShownIndex: newState});
-	}
+        this.setState({ isShownIndex: newState });
+    };
 
-	decrementIndex = () => {
-		const len = this.props.children.length;
-		const newIndex = (this.state.isShownIndex - 1) % (len)
-		const newState = newIndex < 0 ?
-			len - 1 : newIndex;
+    decrementIndex = () => {
+        const len = this.props.children.length;
+        const newIndex = (this.state.isShownIndex - 1) % len;
+        const newState = newIndex < 0 ? len - 1 : newIndex;
 
-		this.setState({isShownIndex: newState});
-	}
+        this.setState({ isShownIndex: newState });
+    };
 
-	renderChildren() {
-		const {isShownIndex} = this.state;
-		const SelectedComponent = this.props.children[isShownIndex];
+    renderChildren() {
+        const { isShownIndex } = this.state;
+        const SelectedComponent = this.props.children[isShownIndex];
 
-		return(
-			<div className={this.props.receivedClassName}>
-				{React.cloneElement(SelectedComponent, {
-						incrementIndex: this.incrementIndex,
-						decrementIndex: this.decrementIndex
-					})
-				}
-			</div>
-		)
-	}
+        return (
+            <div className={this.props.receivedClassName}>
+                {React.cloneElement(SelectedComponent, {
+                    incrementIndex: this.incrementIndex,
+                    decrementIndex: this.decrementIndex
+                })}
+            </div>
+        );
+    }
 
-	render() {
-
-		return(
-			<React.Fragment>
-				{this.renderChildren()}
-			</React.Fragment>
-		)
-	}
+    render() {
+        return <React.Fragment>{this.renderChildren()}</React.Fragment>;
+    }
 }
 
 export default AnimatedComponentSwap;

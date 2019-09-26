@@ -6,8 +6,8 @@ import BaseForm from "legos/BaseForm";
 import Divider from "legos/Divider";
 
 // Get Ajax handler and form validator
-import ajaxHandler from "services/ajaxHandler";
-import formValidation from "services/formValidation";
+import ajaxHandler from "utils/ajaxHandler";
+import formValidation from "utils/formValidation";
 
 import "./styles.scss";
 

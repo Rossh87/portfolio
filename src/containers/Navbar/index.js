@@ -1,84 +1,79 @@
-import React from 'react';
-import {withRouter} from 'react-router';
+import React from "react";
+import { withRouter } from "react-router";
 
 // Local components
-import NavLinkItem from 'legos/NavLinkItem';
-import Hamburger from 'legos/Hamburger';
+import NavLinkItem from "legos/NavLinkItem";
+import Hamburger from "legos/Hamburger";
 
-import './styles.scss';
-
-// Separate stylesheet for hover/focus behaviors to keep css file lengths
-// readable.
-import './hover-effects.scss'
-
+import "./styles.scss";
 
 class Navbar extends React.Component {
-	state = {
-		isOpen: false
-	}
+    state = {
+        isOpen: false
+    };
 
-	handleClick = (e) => {
-		this.setState(prev => {
-			return {
-				isOpen: !prev.isOpen
-			}
-		});
-	}
+    handleClick = (e) => {
+        this.setState((prev) => {
+            return {
+                isOpen: !prev.isOpen
+            };
+        });
+    };
 
-	getNavClasses = () => {	
-		return this.state.isOpen ?
-			"c-nav s-is-open"
-			: "c-nav"
-	}
+    getNavClasses = () => {
+        return this.state.isOpen ? "c-nav s-is-open" : "c-nav";
+    };
 
-	render() {
-		return(
-			<div className = "l-nav-anchor">
-				<Hamburger handleClick={this.handleClick} />
-				<nav className={this.getNavClasses()}>
-					<ul className="c-nav_menu">
+    render() {
+        return (
+            <div className="l-nav-anchor">
+                <Hamburger handleClick={this.handleClick} />
+                <nav className={this.getNavClasses()}>
+                    <ul className="c-nav_menu e-hover-brackets">
+                        <NavLinkItem
+                            styleClass="c-nav_item"
+                            isLinkComponent={true}
+                            clickHandler={this.handleClick}
+                            path={"/"}
+                            hasHoverEffect
+                        >
+                            Home
+                        </NavLinkItem>
 
-						<NavLinkItem
-								styleClass="c-nav_item"
-								isLinkComponent={true}
-								clickHandler={this.handleClick}
-								path={'/'}
-						>
-							Home
-						</NavLinkItem>
+                        <NavLinkItem
+                            styleClass="c-nav_item"
+                            isLinkComponent={false}
+                            clickHandler={this.handleClick}
+                            path={"#about"}
+                            hasHoverEffect
+                        >
+                            About
+                        </NavLinkItem>
 
-						<NavLinkItem
-							styleClass="c-nav_item"
-							isLinkComponent={false}
-							clickHandler={this.handleClick}
-							path={'#about'}
-						>
-							About
-						</NavLinkItem>
+                        <NavLinkItem
+                            styleClass="c-nav_item"
+                            isLinkComponent={false}
+                            clickHandler={this.handleClick}
+                            path={"https://github.com/Rossh87/portfolio"}
+                            hasHoverEffect
+                        >
+                            Source
+                        </NavLinkItem>
 
-						<NavLinkItem
-							styleClass="c-nav_item"
-							isLinkComponent={false}
-							clickHandler={this.handleClick}
-							path={'https://github.com/Rossh87/portfolio'}
-						>
-							Source
-						</NavLinkItem>
-
-						<NavLinkItem
-							styleClass="c-nav_item"
-							isLinkComponent={false}
-							clickHandler={this.handleClick}
-							path={'#contact'}
-						>
-							Contact
-						</NavLinkItem>
-						
-					</ul>
-				</nav>
-			</div>
-		)
-	}
+                        <NavLinkItem
+                            styleClass="c-nav_item"
+                            isLinkComponent={false}
+                            clickHandler={this.handleClick}
+                            path={"#contact"}
+                            hasHoverEffect
+                        >
+                            Contact
+                        </NavLinkItem>
+                    </ul>
+                </nav>
+            </div>
+        );
+    }
 }
 
 // To facilitate sticky positioning, the Navbar component will live outside

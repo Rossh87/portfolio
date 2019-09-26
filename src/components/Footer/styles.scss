@@ -1,25 +1,43 @@
-@import 'commonStyles/_colors.scss';
+@import "commonStyles/_colors.scss";
 
-.c-footer  {
-	height: 20vh;
-	border-top: 2px solid $highlight;
-	margin: 3rem 0;
-	padding: 1rem;
-	font-size: 1.4rem;
-	max-width: 800px;
+.c-footer {
+    height: 20vh;
+    border-top: 2px solid $highlight;
+    margin: 3rem 0;
+    padding: 1rem;
+    font-size: 1.4rem;
+    max-width: 800px;
+    display: flex;
+    justify-content: center;
 }
 
-.c-footer_links {
-	height: 100%;
-	display: grid;
-	grid: repeat(4, 1fr) / 1fr;
+.c-footer_list {
+    display: grid;
+    grid: repeat(4, 1fr) / 1fr;
+}
+
+.c-footer_item {
+    padding: 0.5rem 0.75rem;
+    justify-self: center;
+}
+
+.c-footer_text {
+    margin-right: 0.5rem;
+}
+
+.c-footer_icon {
+    align-self: baseline;
+    fill: lighten($dark, 10%);
+    transform: translateY(2px);
+}
+
+.c-footer_copyright {
+    font-size: 1rem;
 }
 
 @media screen and (min-width: 550px) {
-	.c-footer {
-		width: 80%;
-		margin: 3rem auto;
-	}
+    .c-footer {
+        width: 80%;
+        margin: 3rem auto;
+    }
 }
-
-

@@ -1,45 +1,52 @@
-import React from 'react';
-
+import React from "react";
 
 // Get local components
-import FooterLinkItem from 'legos/FooterLinkItem';
+import NavLinkItem from "legos/NavLinkItem";
 
 // Get svg graphics
-import {
-	FaGithubSquare,
-	FaLinkedin,
-	FaFilePdf
-} from 'react-icons/fa';
+import { FaGithubSquare, FaLinkedin, FaFilePdf } from "react-icons/fa";
 
+import "./styles.scss";
 
-import './styles.scss';
+const Footer = (props) => {
+    const REACT_APP_API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
 
-const Footer = props => {
-	const REACT_APP_API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
+    return (
+        <footer className="c-footer">
+            <ul className="c-footer_list e-hover-brackets">
+                <NavLinkItem
+                    path={`${REACT_APP_API_ENDPOINT}/download/resume`}
+                    hasHoverEffect
+                    styleClass="c-footer_item"
+                >
+                    <span className="c-footer_text">Résumé</span>
 
-	return(
-		<footer className="c-footer">
-			<ul className="c-footer_links">
+                    <FaFilePdf className="c-footer_icon" />
+                </NavLinkItem>
 
-				<FooterLinkItem icon={FaFilePdf} path={`${REACT_APP_API_ENDPOINT}/download/resume`}>
-					Résumé
-				</FooterLinkItem>
-				
-				<FooterLinkItem path="https://www.linkedin.com/in/rhunter-dev" icon={FaLinkedin}>
-					LinkedIn
-				</FooterLinkItem>
+                <NavLinkItem
+                    path="https://www.linkedin.com/in/rhunter-dev"
+                    hasHoverEffect
+                    styleClass="c-footer_item"
+                >
+                    <span className="c-footer_text">LinkedIn</span>
 
-				<FooterLinkItem  path="https://github.com/Rossh87" icon={FaGithubSquare}>
-					GitHub
-				</FooterLinkItem>
+                    <FaLinkedin className="c-footer_icon" />
+                </NavLinkItem>
 
-				<FooterLinkItem path="#about">
-					Ross Hunter, 2019
-				</FooterLinkItem>
+                <NavLinkItem
+                    styleClass="c-footer_item"
+                    path="https://github.com/Rossh87"
+                    hasHoverEffect
+                >
+                    <span className="c-footer_text">GitHub</span>
+                    <FaGithubSquare className="c-footer_icon" />
+                </NavLinkItem>
 
-			</ul>
-		</footer>
-	)
-}
+                <span className="c-footer_copyright">Ross Hunter, 2019</span>
+            </ul>
+        </footer>
+    );
+};
 
 export default Footer;

@@ -1,0 +1,58 @@
+@import "commonStyles/_colors.scss";
+
+// These styles will only apply when menu is expanded, i.e.
+// when viewport is wide enough.
+
+@media screen and (min-width: 550px) {
+    // This code adapted from littlesnippets.net
+    // Find the original @
+    // https://www.littlesnippets.net/blog/some-css-menu-inspiration-using-animated-lines
+    // All creative credit is theirs.
+
+    // .e-hover-brackets {
+    //     text-align: center;
+    // }
+    .e-hover-brackets * {
+        transition: all 0.35s ease;
+    }
+
+    .e-hover-brackets .e-hover-brackets_li {
+        color: $dark;
+        position: relative;
+        text-decoration: none;
+    }
+    .e-hover-brackets .e-hover-brackets_li:before,
+    .e-hover-brackets .e-hover-brackets_li:after {
+        height: 14px;
+        width: 14px;
+        position: absolute;
+        content: "";
+        transition: all 0.35s ease;
+        opacity: 0;
+    }
+    .e-hover-brackets .e-hover-brackets_li:before {
+        left: 0;
+        top: 0;
+        border-left: 3px solid $accent;
+        border-top: 3px solid $accent;
+        transform: translate(100%, 50%);
+    }
+    .e-hover-brackets .e-hover-brackets_li:after {
+        right: 0;
+        bottom: 0;
+        border-right: 3px solid $accent;
+        border-bottom: 3px solid $accent;
+        transform: translate(-100%, -50%);
+    }
+    // .e-hover-brackets a:hover,
+    // .e-hover-brackets .current a {
+    //   color: $highlight;
+    // }
+    .e-hover-brackets .e-hover-brackets_li:hover:before,
+    .e-hover-brackets .current .e-hover-brackets_li:before,
+    .e-hover-brackets .e-hover-brackets_li:hover:after,
+    .e-hover-brackets .current .e-hover-brackets_li:after {
+        transform: translate(0%, 0%);
+        opacity: 1;
+    }
+}

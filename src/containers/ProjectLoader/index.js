@@ -1,100 +1,84 @@
-import React from 'react';
+import React from "react";
 
 // This data container will not be rendered directly by a 'Route'
 // component, so we use HOC to add router awareness
-import {withRouter} from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 
 // Get util to make keys for elements in iterable
-import shortid from 'shortid';
+import shortid from "shortid";
 
 // Get local components
-import PrettyError from 'legos/PrettyError';
-import LoadingGraphic from 'graphicComponents/LoadingGraphic';
+import PrettyError from "legos/PrettyError";
+import LoadingGraphic from "graphicComponents/LoadingGraphic";
 
-
-// Get services
-import ajaxHandler from 'services/ajaxHandler';
+// Get utils
+import ajaxHandler from "utils/ajaxHandler";
 
 class ProjectLoader extends React.Component {
-	state = {
-		isPending: false,
-		error: null,
-		data: []
-	}
+    state = {
+        isPending: false,
+        error: null,
+        data: []
+    };
 
+    async componentDidMount() {
+        // Get info from React Router to build correct URL.
+        const projectType = this.props.match.params.projectType;
 
-	async componentDidMount() {
-		// Get info from React Router to build correct URL.
-		const projectType = this.props.match.params.projectType;
+        this.setState({ isPending: true });
 
-		this.setState({isPending: true});
+        // OMIT leading slash in path passed to ajaxHandler.  It is
+        // configured to hit correct endpoint.
+        try {
+            const projectsArray = await ajaxHandler(
+                "get",
+                `projects/${projectType}`
+            );
 
-		// OMIT leading slash in path passed to ajaxHandler.  It is
-		// configured to hit correct endpoint.
-		try {
-			const projectsArray = await ajaxHandler(
-				'get',
-				`projects/${projectType}`
-			);
+            this.setState({
+                data: [...projectsArray],
+                isPending: false
+            });
+        } catch (error) {
+            // <ErrorBoundary> won't catch async errors, so we handle manually.
+            this.setState({
+                isPending: false,
+                error
+            });
+        }
+    }
 
-			this.setState({
-				data: [...projectsArray],
-				isPending: false
-			});	
-		}
+    renderChildrenWithData() {
+        const { children } = this.props;
+        const { data } = this.state;
+        const child = React.Children.only(children);
 
-		// <ErrorBoundary> won't catch async errors, so we handle manually.
-		catch(error) {
-			this.setState({
-				isPending: false,
-				error
-			});
-		}
-	}
+        const val = React.cloneElement(child, {
+            key: shortid.generate(),
+            data,
+            ...this.props
+        });
 
-	renderChildrenWithData() {
-		const {children} = this.props;
-		const {data} = this.state;
-		const child = React.Children.only(children);
+        return val;
+    }
 
-		const val = React.cloneElement(child, {
-			key: shortid.generate(),
-			data,
-			...this.props
-		});
-		
-		return val;
-	}
+    conditionalRender() {
+        const { isPending, data, error } = this.state;
 
-	conditionalRender() {
-		const {isPending, data, error} = this.state;
+        if (isPending && !error) {
+            return <LoadingGraphic />;
+        } else if (error) {
+            return <PrettyError error={error} />;
+        } else if (!error && data.length) {
+            return this.renderChildrenWithData();
+        }
 
-		if(isPending && !error) {
-			return(
-				<LoadingGraphic />
-			)
-		}
+        return null;
+    }
 
-		else if(error) {
-			return(
-				<PrettyError error = {error} />
-			)
-		}
-
-		else if(!error && data.length) {
-			return this.renderChildrenWithData()
-		}
-
-		return null;
-	}
-
-	render() {
-		return(
-			<React.Fragment>
-				{this.conditionalRender()}
-			</React.Fragment>
-		)
-	}
+    render() {
+        return <React.Fragment>{this.conditionalRender()}</React.Fragment>;
+    }
 }
 
 export default withRouter(ProjectLoader);
