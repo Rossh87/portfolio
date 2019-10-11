@@ -18,6 +18,8 @@ class Navbar extends React.Component {
                 isOpen: !prev.isOpen
             };
         });
+
+        window.scrollTo(0, 0);
     };
 
     getNavClasses = () => {
