@@ -1,23 +1,22 @@
 // Typography
-@import url('https://fonts.googleapis.com/css?family=Istok+Web:400,700|Oswald:400,600');
+@import url("https://fonts.googleapis.com/css?family=Istok+Web:400,700|Oswald:400,600");
 
 $large: 2rem;
 $medium: 1.2rem;
-$small: .8rem;
+$small: 0.8rem;
 
 // Color Palette
 
 $dark: #333333;
-$white: #F1F2EE;
-$silver: #848C8E;
-$gray: #BFB7B6;
-$accent: #4FAE47;
+$white: #f1f2ee;
+$silver: #848c8e;
+$gray: #bfb7b6;
+$accent: #4fae47;
 $react-blue: #61dafb;
 $js-red: #b00000;
 
 $clay-red-trans: rgba(232, 99, 78, 0.4);
 $clay-red: rgb(232, 99, 78);
 
-$highlight-trans: rgba(128, 0, 128, .8);
+$highlight-trans: rgba(128, 0, 128, 0.8);
 $highlight: rgba(128, 0, 128, 1);
-
